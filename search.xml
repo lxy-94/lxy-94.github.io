@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>Pytorch实现PixelShuffle</title>
+      <link href="/2019/08/10/pytorch-shi-xian-pixelshuffle/"/>
+      <url>/2019/08/10/pytorch-shi-xian-pixelshuffle/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>​        今天在思考如何解决model在上采样过程中可能会出现的棋盘格现象，阅读到一篇被CVPR2016收录的论文，里面提出了PixelShuffle，链接如下<a href="https://links.jianshu.com/go?to=https%3A%2F%2Farxiv.org%2Fabs%2F1609.05158" target="_blank" rel="noopener">《Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network》</a>。</p><h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>​        PixelShuffle算法流程图如下，可以实现将h<em>w的低分辨率图像，通过sub-pixel 操作变为rh</em>rw的高分辨率图像，通过卷积层先得到了r^2个通道的图像，然后每个像素点的r^2个通道依次转换为对应的r<em>r的图像块，最终得到rh</em>rw的图像。</p><p><img src="https://upload-images.jianshu.io/upload_images/7812018-c33b5e4567bb5024.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="img"></p><p>​        Pytorch中已经集成了PixelShuffle的module，torch.nn.PixelShuffle(upscale_factor)，形参说明: - input (Variable) – 输入 - upscale_factor (int) – 增加空间分辨率的因子，例子如下。</p><p><img src="https://upload-images.jianshu.io/upload_images/7812018-b2a078e48dfd3084.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="img"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Pytorch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2019/08/10/hello-world/"/>
       <url>/2019/08/10/hello-world/</url>

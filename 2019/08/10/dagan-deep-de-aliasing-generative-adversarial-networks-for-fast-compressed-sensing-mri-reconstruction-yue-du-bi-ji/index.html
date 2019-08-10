@@ -4,8 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 我在云端跳舞">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="《DAGAN: Deep De-Aliasing Generative Adversarial Networks for Fast Compressed Sensing MRI Reconstruction》阅读笔记, 我在云端跳舞">
+    <meta name="description" content="
+论文地址：http://eprints.lincoln.ac.uk/31056/1/Deep_CS_MRI_Paper.pdf
+
+摘要​        相比于传统的基于多线圈的快速磁共振成像技术，基于压缩感知的MRI技术打破了信号处理领域">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | 我在云端跳舞</title>
+    <title>《DAGAN: Deep De-Aliasing Generative Adversarial Networks for Fast Compressed Sensing MRI Reconstruction》阅读笔记 | 我在云端跳舞</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +263,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        《DAGAN: Deep De-Aliasing Generative Adversarial Networks for Fast Compressed Sensing MRI Reconstruction》阅读笔记
                     </div>
                 </div>
             </div>
@@ -375,9 +378,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/论文阅读/" target="_blank">
+                                <span class="chip bg-color">论文阅读</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -395,14 +402,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        73
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        3 分
                     </div>
                     
                 
@@ -418,19 +425,42 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <blockquote>
+<p>论文地址：<a href="http://eprints.lincoln.ac.uk/31056/1/Deep_CS_MRI_Paper.pdf" target="_blank" rel="noopener">http://eprints.lincoln.ac.uk/31056/1/Deep_CS_MRI_Paper.pdf</a></p>
+</blockquote>
+<h1 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h1><p>​        相比于传统的基于多线圈的快速磁共振成像技术，基于压缩感知的MRI技术打破了信号处理领域的金科玉律——奈奎斯特采样定律，使用更少的原始数据重建MRI图像，从而加快了整个成像过程。该论文提出一种基于深度学习的CS-MRI重建策略，提出新的网络模型（DAGAN）来减少重建过程带来的混叠伪影（aliasing artefacts），又结合Perceptual Loss来生成与目标图像更接近的纹理和细节，提出频域损失来增强相似性。重建速度大约为5ms/张。</p>
+<p>​        由于压缩感知技术需要满足两个前提：<strong>稀疏性</strong>和<strong>不相关性</strong>，所以目前CS-MRI的研究需要满足以下三点：</p>
+<ul>
+<li>尽可能随机欠采样，达到抑制噪声又不会降低重建的图像质量，目前大多数采用遵循1D高斯分布的采样模式，为了去除含有更多噪声的高频信息，而保留更多的低频信息。</li>
+<li>MRI图像一定要是可压缩的，也就是具有稀疏性，在这里引用这篇文章<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fzhuanlan.zhihu.com%2Fp%2F22445302" target="_blank" rel="noopener">形象易懂讲解算法II——压缩感知</a>的说明：“关于<strong>稀疏性</strong>可以这样简单直观地理解：若信号在某个域中只有少量非零值，那么它在该域稀疏，该域也被称为信号的<strong>稀疏域</strong>。”</li>
+<li>该算法一定要高效、稳定、精准的重建。（感觉这句很没用？）</li>
+</ul>
+<hr>
+<p>目前CS-MRI的主要<strong>挑战</strong>：</p>
+<ul>
+<li>要满足不相关性准则，也就是随机欠采样；</li>
+<li>现在应用广泛的稀疏变换过于简单，无法捕获复杂图像的轻微细节变化；</li>
+<li>现有算法重建时间过长；</li>
+<li>可能产生过渡平滑或不自然的重建图像；</li>
+</ul>
+<h1 id="本文亮点"><a href="#本文亮点" class="headerlink" title="本文亮点"></a>本文亮点</h1><ul>
+<li>G网络使用U-NET+Skip connection；</li>
+<li>优化学习过程以提高GAN的稳定性。达到快速收敛；</li>
+<li>MSE与Perceptual Loss相结合，获得更好的重建细节；</li>
+<li>将频域信息添加到Loss函数，以保持数据一致性；</li>
+<li>与其他的CS-MRI算法相比，该算法可以应用在更高的加速倍数、用更快的时间得到更好的结果；</li>
+</ul>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p>​        通常CS-MRI重建过程可以理解为：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7812018-4292df64a0a95c10.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/341/format/webp" alt="img"></p>
+<p>​        ![x](<a href="https://math.jianshu.com/math?formula=x表示待重建的图像，![F_{x}" target="_blank" rel="noopener">https://math.jianshu.com/math?formula=x表示待重建的图像，![F_{x}</a> ](<a href="https://math.jianshu.com/math?formula=F_%7Bx%7D%20)表示欠采样的傅里叶编码矩阵，![R](https://math.jianshu.com/math?formula=R)为正则化作用。基于深度学习的CS-MRI重建过程将CNN与CS相结合，公式如下：" target="_blank" rel="noopener">https://math.jianshu.com/math?formula=F_%7Bx%7D%20)表示欠采样的傅里叶编码矩阵，![R](https://math.jianshu.com/math?formula=R)为正则化作用。基于深度学习的CS-MRI重建过程将CNN与CS相结合，公式如下：</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7812018-1ea36d62fc245326.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/589/format/webp" alt="img"></p>
+<p>​        其中<img src="https://math.jianshu.com/math?formula=f_%7Bcnn%7D%20" alt="f_{cnn} ">是通过参数<img src="https://math.jianshu.com/math?formula=%5Ctheta%20" alt="\theta ">的CNN正向传播，<img src="https://math.jianshu.com/math?formula=%5Czeta%20" alt="\zeta ">是另一个正则化参数，CNN网络被训练用以优化重建效果，<img src="https://math.jianshu.com/math?formula=%5Chat%7B%5Ctheta%7D" alt="\hat{\theta}">表示训练后的CNN优化参数。<img src="https://math.jianshu.com/math?formula=x_%7Bu%7D%3DF_%7Bu%7D%5EHy%20" alt="x_{u}=F_{u}^Hy ">表明对y在k空间随机填0欠采样重建后的图像，<img src="https://math.jianshu.com/math?formula=H" alt="H">表示Hermitian转置。MRI数据通常以复数形式编码了幅值和相位信息，在Deep Learning中，通常有两种表示方式，一种是将虚部置零，只保留实部信息；另一种是将实部和虚部当作两个通道共同作为输入。该论文提到为了减少计算量，使用第一种，但一定会丢失相关信息。</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>​    <strong><img src="https://math.jianshu.com/math?formula=L_%7BTOTAL%7D%3D%20%5Calpha%20L_%7BiMSE%7D%2B%5Cbeta%20L_%7BfMSE%7D%2B%5Cgamma%20L_%7BVGG%7D%2BL_%7BGEN%7D%20%20%20%20" alt="L_{TOTAL}= \alpha L_{iMSE}+\beta L_{fMSE}+\gamma L_{VGG}+L_{GEN}    ">，</strong>其中<img src="https://math.jianshu.com/math?formula=L_%7BiMSE%7D%20" alt="L_{iMSE} ">和<img src="https://math.jianshu.com/math?formula=L_%7BfMSE%7D%20" alt="L_{fMSE} ">分别表示时域和频域的MSE；而<img src="https://math.jianshu.com/math?formula=L_%7BVGG%7D%20" alt="L_{VGG} ">则是基于VGG的Perceptual Loss；<img src="https://math.jianshu.com/math?formula=L_%7BGEN%7D%20" alt="L_{GEN} ">则为</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7812018-2f060834e5708d6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/469/format/webp" alt="img"></p>
+<h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p>​        G网络是带有8层卷积以及8层反卷积的U-NET，值得一提的是在G网络中添加了输入<img src="https://math.jianshu.com/math?formula=X_%7Bu%7D%20" alt="X_{u} ">作为Refinement Connection，目的是让G网络更方便地学习残差映射而不是整个图片的映射；D网络则是一个具有11层卷积的标准CNN，并没有使用PatchGAN的思想，而是直接输出Real or Fake。具体结构见下图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7812018-5f2b5ee1a95d6d14.png?imageMogr2/auto-orient/" alt="img"></p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h1><p><img src="https://upload-images.jianshu.io/upload_images/7812018-cd06f4e5c5b0210d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="img"></p>
+<p>​        该论文共在NMSE以及PSNR两个指标进行比较，其中10%到50%表示在K空间重建的采样率，10%表示随机选取K空间10%的信号进行采样，<strong>PFPGR</strong>表示Pixel-FrequencyPerceptual-GAN-Refinement。可以看到，相比于传统的CS-MRI重建算法，该方法在重建速度上获得了大幅度提升，而且重建效果也有一定提高。</p>
 
             </div>
             <hr/>
@@ -589,9 +619,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Hello World》
+                    《《DAGAN: Deep De-Aliasing Generative Adversarial Networks for Fast Compressed Sensing MRI Reconstruction》阅读笔记》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/10/hello-world/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/10/dagan-deep-de-aliasing-generative-adversarial-networks-for-fast-compressed-sensing-mri-reconstruction-yue-du-bi-ji/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Severus
             </a> 采用
@@ -631,29 +661,33 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/08/10/pytorch-shi-xian-pixelshuffle/">
+                <a href="/2019/08/10/dagan-deep-de-aliasing-generative-adversarial-networks-for-fast-compressed-sensing-mri-reconstruction-yue-du-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Pytorch实现PixelShuffle">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="《DAGAN: Deep De-Aliasing Generative Adversarial Networks for Fast Compressed Sensing MRI Reconstruction》阅读笔记">
                         
-                        <span class="card-title">Pytorch实现PixelShuffle</span>
+                        <span class="card-title">《DAGAN: Deep De-Aliasing Generative Adversarial Networks for Fast Compressed Sensing MRI Reconstruction》阅读笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言​        今天在思考如何解决model在上采样过程中可能会出现的棋盘格现象，阅读到一篇被CVPR2016收录的论文，里面提出了PixelShuffle，链接如下《Real-Time Single Image and Video 
+                            
+论文地址：http://eprints.lincoln.ac.uk/31056/1/Deep_CS_MRI_Paper.pdf
+
+摘要​        相比于传统的基于多线圈的快速磁共振成像技术，基于压缩感知的MRI技术打破了信号处理领域
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -662,11 +696,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Pytorch/" target="_blank">
-                        <span class="chip bg-color">Pytorch</span>
+                    <a href="/tags/论文阅读/" target="_blank">
+                        <span class="chip bg-color">论文阅读</span>
                     </a>
                     
                 </div>
@@ -677,7 +712,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2019/08/10/hello-world/">
@@ -707,7 +742,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
@@ -862,7 +896,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">266</span>
+                <span class="white-color">1.2k</span>
             
 
             
