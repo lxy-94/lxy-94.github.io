@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-10T09:28:44.882Z</updated>
+  <updated>2019-08-12T14:00:02.746Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://yoursite.com/2019/08/12/test/"/>
+    <id>http://yoursite.com/2019/08/12/test/</id>
+    <published>2019-08-12T14:00:02.000Z</published>
+    <updated>2019-08-12T14:00:02.746Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Pytorch实现PixelShuffle</title>

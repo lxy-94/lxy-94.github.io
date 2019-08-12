@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>test</title>
+      <link href="/2019/08/12/test/"/>
+      <url>/2019/08/12/test/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Pytorch实现PixelShuffle</title>
       <link href="/2019/08/10/pytorch-shi-xian-pixelshuffle/"/>
       <url>/2019/08/10/pytorch-shi-xian-pixelshuffle/</url>
