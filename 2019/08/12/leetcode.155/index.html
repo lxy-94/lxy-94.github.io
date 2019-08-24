@@ -4,8 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="test, 我在云端跳舞">
-    <meta name="description" content="test | 我在云端跳舞">
+    <meta name="keywords" content="Leetcode.155, 我在云端跳舞">
+    <meta name="description" content="155.最小栈
+设定一个辅助栈，用来存放stack中最小值：
+push:每当push新值进来时，如果“小于等于”min_stack栈顶值，则一起push到min_stack，即更新了最小值；
+pop:判断pop出去的元素值是否是min_st">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>test | 我在云端跳舞</title>
+    <title>Leetcode.155 | 我在云端跳舞</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -28,7 +31,7 @@
     </style>
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -260,13 +263,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        test
+                        Leetcode.155
                     </div>
                 </div>
             </div>
@@ -395,7 +398,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        0
+                        322
                     </div>
                     
 
@@ -418,7 +421,37 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="155-最小栈"><a href="#155-最小栈" class="headerlink" title="155.最小栈"></a>155.最小栈</h2><ul>
+<li>设定一个辅助栈，用来存放<strong>stack</strong>中最小值：<ul>
+<li>push:每当push新值进来时，如果“小于等于”min_stack栈顶值，则一起push到min_stack，即更新了最小值；</li>
+<li>pop:判断pop出去的元素值是否是min_stack栈顶元素值（即最小值），如果是则将min_stack栈顶元素一起pop，这样可以保证min_stack栈顶元素始终是stack中的最小</li>
+<li>getMin:返回min_stack栈顶即可。</li>
+</ul>
+</li>
+<li>min_stack的作用是对stack中的元素做标记，标记的原则是min_stack中元素一定是降序的（栈底最大栈顶最小）。换个角度理解，min_stack等价于遍历stack所有元素，把升序的数字都删除掉，留下一个从栈底到栈顶降序的栈。本题要求获取最小值的复杂度是O(1)，因此须构建辅助栈，在push与pop的过程中始终保持辅助栈为一个降序栈。</li>
+<li>时间空间复杂度都为O(N)，获取最小值复杂度为O(1)。</li>
+</ul>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MinStack</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        initialize your data structure here.
+        """</span>
+        self<span class="token punctuation">.</span>stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        self<span class="token punctuation">.</span>min_stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">def</span> <span class="token function">push</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> int<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> None<span class="token punctuation">:</span>
+    self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token operator">not</span> self<span class="token punctuation">.</span>min_stack <span class="token operator">or</span> x <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span> 
+        self<span class="token punctuation">.</span>min_stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">pop</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> None<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>min_stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">top</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+<span class="token keyword">def</span> <span class="token function">getMin</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
+    <span class="token keyword">return</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
+
             </div>
             <hr/>
 
@@ -576,9 +609,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《test》
+                    《Leetcode.155》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/12/test/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/12/leetcode.155/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Severus
             </a> 采用
@@ -623,19 +656,22 @@
                 <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2019/08/12/test/">
+                <a href="/2019/08/12/leetcode.155/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="test">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Leetcode.155">
                         
-                        <span class="card-title">test</span>
+                        <span class="card-title">Leetcode.155</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            155.最小栈
+设定一个辅助栈，用来存放stack中最小值：
+push:每当push新值进来时，如果“小于等于”min_stack栈顶值，则一起push到min_stack，即更新了最小值；
+pop:判断pop出去的元素值是否是min_st
                         
                     </div>
                     <div class="publish-info">
@@ -661,24 +697,27 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/10/pytorch-shi-xian-pixelshuffle/">
+                <a href="/2019/08/12/ai-ru-ban-ye-qi-di/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Pytorch实现PixelShuffle">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="爱如半夜汽笛">
                         
-                        <span class="card-title">Pytorch实现PixelShuffle</span>
+                        <span class="card-title">爱如半夜汽笛</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言​        今天在思考如何解决model在上采样过程中可能会出现的棋盘格现象，阅读到一篇被CVPR2016收录的论文，里面提出了PixelShuffle，链接如下《Real-Time Single Image and Video 
+                            《爱如半夜汽笛》—- 村上春树女孩问男孩：“你喜欢我喜欢到什么程度？” 
+少年想了想，用沉静的声音说：“半夜汽笛那个程度。” 
+少女默默地等待下文—里面肯定有什么故事。
+“一次，半夜突然醒来。”他开始讲述，“确切时间不清楚，大约两三点吧，也
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-10
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-12
                             </span>
                         <span class="publish-author">
                             
@@ -691,8 +730,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Pytorch/" target="_blank">
-                        <span class="chip bg-color">Pytorch</span>
+                    <a href="/tags/散文/" target="_blank">
+                        <span class="chip bg-color">散文</span>
                     </a>
                     
                 </div>
@@ -850,7 +889,7 @@
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">266</span>
+                <span class="white-color">1.2k</span>
             
 
             
