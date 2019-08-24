@@ -4,8 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Pytorch实现PixelShuffle, 我在云端跳舞">
-    <meta name="description" content="前言​        今天在思考如何解决model在上采样过程中可能会出现的棋盘格现象，阅读到一篇被CVPR2016收录的论文，里面提出了PixelShuffle，链接如下《Real-Time Single Image and Video ">
+    <meta name="keywords" content="《稀缺》解读, 我在云端跳舞">
+    <meta name="description" content="为什么穷人越穷，富人越富？怎样才能摆脱稀缺心态，摆脱贫穷。
+稀缺的构成作者认为长期的贫穷会带来一种稀缺心态。稀缺心态有个好处，会带来专注红利：短时间内集中精力爆发出高度注意力，比如Deadline之前的几天，是工作效率最高的时候；再比如永远">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Pytorch实现PixelShuffle | 我在云端跳舞</title>
+    <title>《稀缺》解读 | 我在云端跳舞</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +261,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Pytorch实现PixelShuffle
+                        《稀缺》解读
                     </div>
                 </div>
             </div>
@@ -377,8 +378,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Pytorch/" target="_blank">
-                                <span class="chip bg-color">Pytorch</span>
+                            <a href="/tags/读书/" target="_blank">
+                                <span class="chip bg-color">读书</span>
                             </a>
                         
                     </div>
@@ -392,21 +393,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-10
+                    2019-08-24
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        193
+                        718
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        2 分
                     </div>
                     
                 
@@ -422,11 +423,29 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        今天在思考如何解决model在上采样过程中可能会出现的棋盘格现象，阅读到一篇被CVPR2016收录的论文，里面提出了PixelShuffle，链接如下<a href="https://links.jianshu.com/go?to=https%3A%2F%2Farxiv.org%2Fabs%2F1609.05158" target="_blank" rel="noopener">《Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network》</a>。</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>​        PixelShuffle算法流程图如下，可以实现将h<em>w的低分辨率图像，通过sub-pixel 操作变为rh</em>rw的高分辨率图像，通过卷积层先得到了r^2个通道的图像，然后每个像素点的r^2个通道依次转换为对应的r<em>r的图像块，最终得到rh</em>rw的图像。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7812018-c33b5e4567bb5024.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="img"></p>
-<p>​        Pytorch中已经集成了PixelShuffle的module，torch.nn.PixelShuffle(upscale_factor)，形参说明: - input (Variable) – 输入 - upscale_factor (int) – 增加空间分辨率的因子，例子如下。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7812018-b2a078e48dfd3084.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="img"></p>
+                <p>为什么穷人越穷，富人越富？怎样才能摆脱稀缺心态，摆脱贫穷。</p>
+<h2 id="稀缺的构成"><a href="#稀缺的构成" class="headerlink" title="稀缺的构成"></a>稀缺的构成</h2><p>作者认为长期的贫穷会带来一种稀缺心态。稀缺心态有个好处，会带来专注红利：短时间内集中精力爆发出高度注意力，比如Deadline之前的几天，是工作效率最高的时候；再比如永远是假期结束前的几天，我们会格外珍惜它。虽然如此的专注会在短时间内带来一定的好处，但如果长时间处在这种稀缺心态，会把一个人拖向贫穷，进入一个匮乏的恶性循环。</p>
+<h2 id="稀缺的危害"><a href="#稀缺的危害" class="headerlink" title="稀缺的危害"></a>稀缺的危害</h2><p>稀缺会带来四种效应：</p>
+<ul>
+<li><p>管窥效应：</p>
+<p>目光短浅，只关注眼前狭窄范围内的紧急事情，在意短时间内的成败与得失，而忽略了长久的发展与积累的技能叠加带来的长期的影响力。</p>
+</li>
+<li><p>借用：</p>
+<p>让一个人习惯性的透支未来的资源，比如透支信用卡，工作拖到下一周，人们往往会高估自己在明天的能力从而不注意提升今天的自己，比如时间管理，精力管理，提高工作效率。</p>
+</li>
+<li><p>没有余闲：</p>
+<p>稀缺会让人把大量的精力投入在了时间与金钱之间权衡的思维过程。因为这样的权衡会让一个人产生大量的心智负担，会消耗注意力、精力，进一步产生管窥效应，让人只注重眼前的事情、忽略了重要的事情。余闲可能会让人不是100%忙碌，但却让人从容地面对生活，不需要过多纠结于小事的权衡，以及有一定容错率。</p>
+</li>
+<li><p>带宽的不足：</p>
+<p>带宽是我们计算能力、关注能力、决策能力、执行能力和抵制诱惑能力的统称，这些能力支撑了我们各种各样的行为。穷人不服药、不除草、不买保险、不储蓄、不投资，都是因为他们不重视这些事情，他们真正缺的不是时间、金钱，而是带宽，亦或是对于这些事情的认知能力。所以要关注长期规划，学习新的技能、定期理财，才有可能跳出稀缺的怪圈。</p>
+</li>
+</ul>
+<h2 id="预防稀缺产生"><a href="#预防稀缺产生" class="headerlink" title="预防稀缺产生"></a>预防稀缺产生</h2><p>不要局限自己的眼光，要把它放长远些，这和吴军博士提到的“见识决定了你能走多远”是一个道理。我们需要</p>
+<ul>
+<li>节约带宽：不要把时间浪费在琐事上，集中在可以长期积累的事情上；</li>
+<li>留有余闲：不要透支未来，定期存储、按时休息，设置提醒；</li>
+<li>设置提醒：把重要的事情拉回到视野中引起重视；</li>
+</ul>
 
             </div>
             <hr/>
@@ -585,9 +604,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Pytorch实现PixelShuffle》
+                    《《稀缺》解读》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/10/pytorch-shi-xian-pixelshuffle/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/24/xi-que-jie-du/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Severus
             </a> 采用
@@ -627,32 +646,31 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/08/12/ai-ru-ban-ye-qi-di/">
+                <a href="/2019/08/24/xi-que-jie-du/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="爱如半夜汽笛">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="《稀缺》解读">
                         
-                        <span class="card-title">爱如半夜汽笛</span>
+                        <span class="card-title">《稀缺》解读</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            《爱如半夜汽笛》—- 村上春树女孩问男孩：“你喜欢我喜欢到什么程度？” 
-少年想了想，用沉静的声音说：“半夜汽笛那个程度。” 
-少女默默地等待下文—里面肯定有什么故事。
-“一次，半夜突然醒来。”他开始讲述，“确切时间不清楚，大约两三点吧，也
+                            为什么穷人越穷，富人越富？怎样才能摆脱稀缺心态，摆脱贫穷。
+稀缺的构成作者认为长期的贫穷会带来一种稀缺心态。稀缺心态有个好处，会带来专注红利：短时间内集中精力爆发出高度注意力，比如Deadline之前的几天，是工作效率最高的时候；再比如永远
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -661,11 +679,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/散文/" target="_blank">
-                        <span class="chip bg-color">散文</span>
+                    <a href="/tags/读书/" target="_blank">
+                        <span class="chip bg-color">读书</span>
                     </a>
                     
                 </div>
@@ -679,24 +698,25 @@
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/10/hello-world/">
+                <a href="/2019/08/15/shen-du-xue-xi-de-attenton-ji-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="深度学习的Attenton机制">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">深度学习的Attenton机制</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            简介​        通常在计算机视觉的深度学习算法中，Attention机制基本思想是让系统学会注意力，可以自动关注那些我们希望它关注的重点信息。
+Attention​       通常Attention机制被分为soft attenti
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-10
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-15
                             </span>
                         <span class="publish-author">
                             
@@ -705,6 +725,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/论文/" target="_blank">
+                        <span class="chip bg-color">论文</span>
+                    </a>
+                    
                 </div>
                 
             </div>

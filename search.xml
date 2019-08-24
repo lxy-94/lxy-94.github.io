@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>《稀缺》解读</title>
+      <link href="/2019/08/24/xi-que-jie-du/"/>
+      <url>/2019/08/24/xi-que-jie-du/</url>
+      
+        <content type="html"><![CDATA[<p>为什么穷人越穷，富人越富？怎样才能摆脱稀缺心态，摆脱贫穷。</p><h2 id="稀缺的构成"><a href="#稀缺的构成" class="headerlink" title="稀缺的构成"></a>稀缺的构成</h2><p>作者认为长期的贫穷会带来一种稀缺心态。稀缺心态有个好处，会带来专注红利：短时间内集中精力爆发出高度注意力，比如Deadline之前的几天，是工作效率最高的时候；再比如永远是假期结束前的几天，我们会格外珍惜它。虽然如此的专注会在短时间内带来一定的好处，但如果长时间处在这种稀缺心态，会把一个人拖向贫穷，进入一个匮乏的恶性循环。</p><h2 id="稀缺的危害"><a href="#稀缺的危害" class="headerlink" title="稀缺的危害"></a>稀缺的危害</h2><p>稀缺会带来四种效应：</p><ul><li><p>管窥效应：</p><p>目光短浅，只关注眼前狭窄范围内的紧急事情，在意短时间内的成败与得失，而忽略了长久的发展与积累的技能叠加带来的长期的影响力。</p></li><li><p>借用：</p><p>让一个人习惯性的透支未来的资源，比如透支信用卡，工作拖到下一周，人们往往会高估自己在明天的能力从而不注意提升今天的自己，比如时间管理，精力管理，提高工作效率。</p></li><li><p>没有余闲：</p><p>稀缺会让人把大量的精力投入在了时间与金钱之间权衡的思维过程。因为这样的权衡会让一个人产生大量的心智负担，会消耗注意力、精力，进一步产生管窥效应，让人只注重眼前的事情、忽略了重要的事情。余闲可能会让人不是100%忙碌，但却让人从容地面对生活，不需要过多纠结于小事的权衡，以及有一定容错率。</p></li><li><p>带宽的不足：</p><p>带宽是我们计算能力、关注能力、决策能力、执行能力和抵制诱惑能力的统称，这些能力支撑了我们各种各样的行为。穷人不服药、不除草、不买保险、不储蓄、不投资，都是因为他们不重视这些事情，他们真正缺的不是时间、金钱，而是带宽，亦或是对于这些事情的认知能力。所以要关注长期规划，学习新的技能、定期理财，才有可能跳出稀缺的怪圈。</p></li></ul><h2 id="预防稀缺产生"><a href="#预防稀缺产生" class="headerlink" title="预防稀缺产生"></a>预防稀缺产生</h2><p>不要局限自己的眼光，要把它放长远些，这和吴军博士提到的“见识决定了你能走多远”是一个道理。我们需要</p><ul><li>节约带宽：不要把时间浪费在琐事上，集中在可以长期积累的事情上；</li><li>留有余闲：不要透支未来，定期存储、按时休息，设置提醒；</li><li>设置提醒：把重要的事情拉回到视野中引起重视；</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 读书 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>深度学习的Attenton机制</title>
+      <link href="/2019/08/15/shen-du-xue-xi-de-attenton-ji-zhi/"/>
+      <url>/2019/08/15/shen-du-xue-xi-de-attenton-ji-zhi/</url>
+      
+        <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>​        通常在计算机视觉的深度学习算法中，Attention机制基本思想是让系统学会注意力，可以自动关注那些我们希望它关注的重点信息。</p><h1 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h1><p>​       通常Attention机制被分为soft attention和hard attention，目前接触的算法通常都是soft attention机制。</p><h2 id="Soft-Attention"><a href="#Soft-Attention" class="headerlink" title="Soft Attention"></a>Soft Attention</h2><h3 id="空间域"><a href="#空间域" class="headerlink" title="空间域"></a>空间域</h3><p>​        空间注意力表现在模型对于图像的不同位置的关注程度不同。当特征图大小为 H×W×C，空间注意力对应着大小为H×W的矩阵，该矩阵的每个位置对原特征图对应位置的像素来讲就是一个权重，pixel-wise multiply。</p><p><img src="https://img2018.cnblogs.com/blog/1665919/201905/1665919-20190507160648693-2046757003.png" alt="img"></p><h2 id="通道域"><a href="#通道域" class="headerlink" title="通道域"></a>通道域</h2><p>​        这种注意力主要分布在channel中，相当于对图像的不同通道的关注程度不同。当特征图大小为 H×W×C，通道注意力对应着大小为1×1×C的矩阵，每个位置对应原channel图像全部像素的一个权重，channel-wise multiply。</p><p><img src="https://img2018.cnblogs.com/blog/1665919/201905/1665919-20190507161354647-1211359587.png" alt="img"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 论文 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Leetcode.155</title>
       <link href="/2019/08/12/leetcode.155/"/>
       <url>/2019/08/12/leetcode.155/</url>
