@@ -4,8 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, 我在云端跳舞">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="Pytorch实现PixelShuffle, 我在云端跳舞">
+    <meta name="description" content="前言​        今天在思考如何解决model在上采样过程中可能会出现的棋盘格现象，阅读到一篇被CVPR2016收录的论文，里面提出了PixelShuffle，链接如下《Real-Time Single Image and Video ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | 我在云端跳舞</title>
+    <title>Pytorch实现PixelShuffle | 我在云端跳舞</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +260,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Hello World
+                        Pytorch实现PixelShuffle
                     </div>
                 </div>
             </div>
@@ -375,9 +375,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Pytorch/" target="_blank">
+                                <span class="chip bg-color">Pytorch</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -395,7 +399,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        73
+                        193
                     </div>
                     
 
@@ -418,15 +422,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        今天在思考如何解决model在上采样过程中可能会出现的棋盘格现象，阅读到一篇被CVPR2016收录的论文，里面提出了PixelShuffle，链接如下<a href="https://links.jianshu.com/go?to=https%3A%2F%2Farxiv.org%2Fabs%2F1609.05158" target="_blank" rel="noopener">《Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network》</a>。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>​        PixelShuffle算法流程图如下，可以实现将h<em>w的低分辨率图像，通过sub-pixel 操作变为rh</em>rw的高分辨率图像，通过卷积层先得到了r^2个通道的图像，然后每个像素点的r^2个通道依次转换为对应的r<em>r的图像块，最终得到rh</em>rw的图像。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7812018-c33b5e4567bb5024.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="img"></p>
+<p>​        Pytorch中已经集成了PixelShuffle的module，torch.nn.PixelShuffle(upscale_factor)，形参说明: - input (Variable) – 输入 - upscale_factor (int) – 增加空间分辨率的因子，例子如下。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7812018-b2a078e48dfd3084.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp" alt="img"></p>
 
             </div>
             <hr/>
@@ -585,9 +585,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Hello World》
+                    《Pytorch实现PixelShuffle》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/10/hello-world/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/10/pytorch-shi-xian-pixelshuffle/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Severus
             </a> 采用
@@ -631,24 +631,27 @@
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/08/10/pytorch-shi-xian-pixelshuffle/">
+                <a href="/2019/08/12/ai-ru-ban-ye-qi-di/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Pytorch实现PixelShuffle">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="爱如半夜汽笛">
                         
-                        <span class="card-title">Pytorch实现PixelShuffle</span>
+                        <span class="card-title">爱如半夜汽笛</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            前言​        今天在思考如何解决model在上采样过程中可能会出现的棋盘格现象，阅读到一篇被CVPR2016收录的论文，里面提出了PixelShuffle，链接如下《Real-Time Single Image and Video 
+                            《爱如半夜汽笛》—- 村上春树女孩问男孩：“你喜欢我喜欢到什么程度？” 
+少年想了想，用沉静的声音说：“半夜汽笛那个程度。” 
+少女默默地等待下文—里面肯定有什么故事。
+“一次，半夜突然醒来。”他开始讲述，“确切时间不清楚，大约两三点吧，也
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-10
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-12
                         </span>
                         <span class="publish-author">
                             
@@ -661,8 +664,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Pytorch/" target="_blank">
-                        <span class="chip bg-color">Pytorch</span>
+                    <a href="/tags/散文/" target="_blank">
+                        <span class="chip bg-color">散文</span>
                     </a>
                     
                 </div>
@@ -673,7 +676,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2019/08/10/hello-world/">
@@ -703,7 +706,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
