@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-24T07:42:12.577Z</updated>
+  <updated>2019-09-23T21:58:34.953Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>tensorboardX的Scalar使用详解</title>
+    <link href="http://yoursite.com/2019/09/24/tensorboardx-de-scalar-shi-yong-xiang-jie/"/>
+    <id>http://yoursite.com/2019/09/24/tensorboardx-de-scalar-shi-yong-xiang-jie/</id>
+    <published>2019-09-23T21:13:39.000Z</published>
+    <updated>2019-09-23T21:58:34.953Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;​       
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Pytorch" scheme="http://yoursite.com/tags/Pytorch/"/>
+    
+  </entry>
   
   <entry>
     <title>《稀缺》解读</title>

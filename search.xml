@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>tensorboardX的Scalar使用详解</title>
+      <link href="/2019/09/24/tensorboardx-de-scalar-shi-yong-xiang-jie/"/>
+      <url>/2019/09/24/tensorboardx-de-scalar-shi-yong-xiang-jie/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        昨日想通过可视化的方式观察使用Pytorch训练的模型的loss下降趋势，以及模型框架，经过对比，选择tensorboardX。<strong>Github上的解决方案：**</strong><a href="https://github.com/lanpa/tensorboardX**。" target="_blank" rel="noopener">https://github.com/lanpa/tensorboardX**。</a></p><h2 id="依赖环境"><a href="#依赖环境" class="headerlink" title="依赖环境"></a>依赖环境</h2><p>Python 2.7+</p><p>Pytorch 0.4+</p><p>tensorboardX: pip install tensorboardX, pip install tensorflow</p><h2 id="代码教程"><a href="#代码教程" class="headerlink" title="代码教程"></a>代码教程</h2><h3 id="Scalar-教程"><a href="#Scalar-教程" class="headerlink" title="Scalar 教程"></a>Scalar 教程</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> npfrom tensorboardX <span class="token keyword">import</span> SummaryWriterwriter <span class="token operator">=</span> SummaryWriter<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token keyword">for</span> epoch <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>        writer<span class="token punctuation">.</span>add_scalar<span class="token punctuation">(</span><span class="token string">'scalar/test'</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> epoch<span class="token punctuation">)</span>           writer<span class="token punctuation">.</span>add_scalars<span class="token punctuation">(</span><span class="token string">'scalar/scalars_test'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'xsinx'</span><span class="token punctuation">:</span> epoch<span class="token operator">*</span>np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>epoch<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'xcosx'</span><span class="token punctuation">:</span> epoch<span class="token operator">*</span>np<span class="token punctuation">.</span>cos<span class="token punctuation">(</span>epoch<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span> epoch<span class="token punctuation">)</span>writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre><p>​        writer = Summarywriter()有两个参数(log_dir=None, comment=‘’, **kwargs)，其中log_dir为生成的文件所存放的目录，comment为文件名称，默认目录生成runs文件夹目录。</p><p><img src="C:%5CUsers%5Clxy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569274648075.png" alt="1569274648075"></p><p>​        当SummaryWriter(comment=’base_scalar’)，生成结果为：</p><p><img src="C:%5CUsers%5Clxy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569274748450.png" alt="1569274748450"></p><p>​        writer.add_scalar()，这句话是将我们需要的数据保存在文件里供可视化使用。第一个参数理解为保存的名称，第二个参数为Y轴数据，第三个参数为X轴数据。我们在runs同级目录下使用命令行：tensorboard –logdir runs，如下所示：</p><p><img src="C:%5CUsers%5Clxy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569275831694.png" alt="1569275831694"></p><p>​        最终的效果图如下：</p><p><img src="C:%5CUsers%5Clxy%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5C1569275879935.png" alt="1569275879935"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Pytorch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《稀缺》解读</title>
       <link href="/2019/08/24/xi-que-jie-du/"/>
       <url>/2019/08/24/xi-que-jie-du/</url>
