@@ -4,11 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Leetcode.155, 我在云端跳舞">
-    <meta name="description" content="155.最小栈
-设定一个辅助栈，用来存放stack中最小值：
-push:每当push新值进来时，如果“小于等于”min_stack栈顶值，则一起push到min_stack，即更新了最小值；
-pop:判断pop出去的元素值是否是min_st">
+    <meta name="keywords" content="SinGAN论文解读, 我在云端跳舞">
+    <meta name="description" content="﻿论文地址这篇论文为ICCV2019最佳论文，主要贡献在于设计了一个基于单张图片的图像生成模型，并将其应用到多个方向，包括图像随机生成，图像融合、手绘画转自然图像、图像编辑以及图像超分重建。最近找时间将学习到的部分进行总结整理。
+创新点
+设">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@ pop:判断pop出去的元素值是否是min_st">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Leetcode.155 | 我在云端跳舞</title>
+    <title>SinGAN论文解读 | 我在云端跳舞</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -263,13 +262,13 @@ pop:判断pop出去的元素值是否是min_st">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Leetcode.155
+                        SinGAN论文解读
                     </div>
                 </div>
             </div>
@@ -378,9 +377,13 @@ pop:判断pop出去的元素值是否是min_st">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/论文/" target="_blank">
+                                <span class="chip bg-color">论文</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -391,21 +394,21 @@ pop:判断pop出去的元素值是否是min_st">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-12
+                    2019-11-17
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        322
+                        884
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        3 分
                     </div>
                     
                 
@@ -421,36 +424,25 @@ pop:判断pop出去的元素值是否是min_st">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="155-最小栈"><a href="#155-最小栈" class="headerlink" title="155.最小栈"></a>155.最小栈</h2><ul>
-<li>设定一个辅助栈，用来存放<strong>stack</strong>中最小值：<ul>
-<li>push:每当push新值进来时，如果“小于等于”min_stack栈顶值，则一起push到min_stack，即更新了最小值；</li>
-<li>pop:判断pop出去的元素值是否是min_stack栈顶元素值（即最小值），如果是则将min_stack栈顶元素一起pop，这样可以保证min_stack栈顶元素始终是stack中的最小</li>
-<li>getMin:返回min_stack栈顶即可。</li>
+                <p>﻿<a href="https://arxiv.org/pdf/1905.01164.pdf" target="_blank" rel="noopener">论文地址</a><br>这篇论文为ICCV2019最佳论文，主要贡献在于设计了一个基于单张图片的图像生成模型，并将其应用到多个方向，包括图像随机生成，图像融合、手绘画转自然图像、图像编辑以及图像超分重建。最近找时间将学习到的部分进行总结整理。</p>
+<h2 id="创新点"><a href="#创新点" class="headerlink" title="创新点"></a>创新点</h2><ul>
+<li>设计一种基于单张自然图像训练的非条件GAN网络（由噪声作为输入直接生成）；</li>
+<li>无需修改模型，直接应用于多种图像任务；</li>
+<li>GAN网络中的G网络与D网络具有相同的模型结构以及相同的感受野，并添加一种重建损失，保证GAN可以进行平稳训练；</li>
+<li>设计一种coarse-to-fine的金字塔型GAN网络，每一层学习到前一层缺失的细节；</li>
 </ul>
-</li>
-<li>min_stack的作用是对stack中的元素做标记，标记的原则是min_stack中元素一定是降序的（栈底最大栈顶最小）。换个角度理解，min_stack等价于遍历stack所有元素，把升序的数字都删除掉，留下一个从栈底到栈顶降序的栈。本题要求获取最小值的复杂度是O(1)，因此须构建辅助栈，在push与pop的过程中始终保持辅助栈为一个降序栈。</li>
-<li>时间空间复杂度都为O(N)，获取最小值复杂度为O(1)。</li>
-</ul>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MinStack</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""
-        initialize your data structure here.
-        """</span>
-        self<span class="token punctuation">.</span>stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        self<span class="token punctuation">.</span>min_stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">def</span> <span class="token function">push</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> int<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> None<span class="token punctuation">:</span>
-    self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token operator">not</span> self<span class="token punctuation">.</span>min_stack <span class="token operator">or</span> x <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span> 
-        self<span class="token punctuation">.</span>min_stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">pop</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> None<span class="token punctuation">:</span>
-    <span class="token keyword">if</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>min_stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">def</span> <span class="token function">top</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
-    <span class="token keyword">return</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-
-<span class="token keyword">def</span> <span class="token function">getMin</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
-    <span class="token keyword">return</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
+<h2 id="网络架构"><a href="#网络架构" class="headerlink" title="网络架构"></a>网络架构</h2><p><img src="https://img-blog.csdnimg.cn/20191116095035182.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk3NTg4Nw==,size_16,color_FFFFFF,t_70" alt="SinGAN网络模型"><br>上图为本论文使用的网络架构，由N个GAN网络组成金字塔形状的SinGAN结构。从训练到测试，论文都是基于Coarse-to-Fine思想，由下到上，尺度逐渐由粗糙到精细。在第n个尺度上，Gn网络的输入是第n+1个G网络的生成图像，经过上采样后与对应随机噪声相加的结果，学习生成图像样本，而D网络判断生成图像的真假。<br>值得一提的是，本论文的每一层D网络都是基于Patch判断的，经典的PatchD，从最粗糙层GN一直上升到最精细层G0，每个D的感受野固定，都是11*11，也就是说，在最粗糙的GN，patch大小为图像的1/2，此时GAN网络可以学习到图像的全局结构，而在最精细的G0，GAN网络学习的是局部细节。在此引用一篇解答文章，具体的公式如下：<br><img src="https://img-blog.csdnimg.cn/2019111610195583.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk3NTg4Nw==,size_16,color_FFFFFF,t_70" alt="多尺度结构"></p>
+<h2 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h2><p><img src="https://img-blog.csdnimg.cn/20191116102117293.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk3NTg4Nw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>其中的重建损失保证最粗糙一层可以由噪声直接生成图像，保证了相近的图像风格。</p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><h3 id="生成的随机图像"><a href="#生成的随机图像" class="headerlink" title="生成的随机图像"></a>生成的随机图像</h3><p><img src="https://img-blog.csdnimg.cn/20191116102808916.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk3NTg4Nw==,size_16,color_FFFFFF,t_70" alt="生成的图像"><br>可以发现，SinGAN可以很好的学习图像的纹理和位置信息，同时对于阴影以及水中的倒影也有学习，不过第二行在夕阳下山峰的倒影并不是很真实，略微不符合自然规律。</p>
+<h3 id="模型应用的不同结果"><a href="#模型应用的不同结果" class="headerlink" title="模型应用的不同结果"></a>模型应用的不同结果</h3><p><img src="https://img-blog.csdnimg.cn/20191116103338835.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk3NTg4Nw==,size_16,color_FFFFFF,t_70" alt></p>
+<h3 id="SinGAN的层数的影响"><a href="#SinGAN的层数的影响" class="headerlink" title="SinGAN的层数的影响"></a>SinGAN的层数的影响</h3><p>下图显示在测试过程中SinGAN的层数对于最终图像的影响，在这里n=N表示从最粗糙部分完全由噪声生成，n=N-1表示由原始图像下采样并于噪声相加得到。<br><img src="https://img-blog.csdnimg.cn/20191117114632166.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk3NTg4Nw==,size_16,color_FFFFFF,t_70" alt="SinGAN不同层数的影响"></p>
+<h3 id="训练层数的影响"><a href="#训练层数的影响" class="headerlink" title="训练层数的影响"></a>训练层数的影响</h3><p>下图展示了SinGAN网络应用不同训练层数对于最终生成图像的影响，可以发现，当仅使用2层GAN训练时，由于感受野受限，模型只能学习到局部细节，而缺乏全局信息，随着训练层数的提高SinGAN可以学习到更多的全局信息。<br><img src="https://img-blog.csdnimg.cn/20191117120257707.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDk3NTg4Nw==,size_16,color_FFFFFF,t_70" alt="SinGAN训练层数的影响"></p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>本文介绍了一种可以从单幅自然图像中学习的新型非条件生成框架–SinGAN。证明了其可以学习单一图像的完全分布，从噪声完全生成具有逼真细节、清晰纹理的自然图像。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>文章：<a href="https://arxiv.org/pdf/1905.01164.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1905.01164.pdf</a><br>GitHub：<a href="https://github.com/tamarott/SinGAN/tree/master/SinGAN" target="_blank" rel="noopener">https://github.com/tamarott/SinGAN/tree/master/SinGAN</a><br>参考文献：<br><a href="http://www.dataguru.cn/article-15165-1.html" target="_blank" rel="noopener">http://www.dataguru.cn/article-15165-1.html</a></p>
+<p>知乎：</p>
+<p><a href="https://zhuanlan.zhihu.com/p/92218525" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/92218525</a></p>
+<p>CSDN：</p>
+<p><a href="https://blog.csdn.net/weixin_44975887/article/details/103089483" target="_blank" rel="noopener">https://blog.csdn.net/weixin_44975887/article/details/103089483</a></p>
 
             </div>
             <hr/>
@@ -609,9 +601,9 @@ pop:判断pop出去的元素值是否是min_st">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Leetcode.155》
+                    《SinGAN论文解读》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/12/leetcode.155/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/11/17/singan-lun-wen-jie-du/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Severus
             </a> 采用
@@ -651,30 +643,32 @@ pop:判断pop出去的元素值是否是min_st">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/08/15/shen-du-xue-xi-de-attenton-ji-zhi/">
+                <a href="/2019/11/17/singan-lun-wen-jie-du/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="深度学习的Attenton机制">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="SinGAN论文解读">
                         
-                        <span class="card-title">深度学习的Attenton机制</span>
+                        <span class="card-title">SinGAN论文解读</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简介​        通常在计算机视觉的深度学习算法中，Attention机制基本思想是让系统学会注意力，可以自动关注那些我们希望它关注的重点信息。
-Attention​       通常Attention机制被分为soft attenti
+                            ﻿论文地址这篇论文为ICCV2019最佳论文，主要贡献在于设计了一个基于单张图片的图像生成模型，并将其应用到多个方向，包括图像随机生成，图像融合、手绘画转自然图像、图像编辑以及图像超分重建。最近找时间将学习到的部分进行总结整理。
+创新点
+设
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -683,6 +677,7 @@ Attention​       通常Attention机制被分为soft attenti
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -701,27 +696,24 @@ Attention​       通常Attention机制被分为soft attenti
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/12/ai-ru-ban-ye-qi-di/">
+                <a href="/2019/09/24/tensorboardx-de-scalar-shi-yong-xiang-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="爱如半夜汽笛">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="tensorboardX的Scalar使用详解">
                         
-                        <span class="card-title">爱如半夜汽笛</span>
+                        <span class="card-title">tensorboardX的Scalar使用详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            《爱如半夜汽笛》—- 村上春树女孩问男孩：“你喜欢我喜欢到什么程度？” 
-少年想了想，用沉静的声音说：“半夜汽笛那个程度。” 
-少女默默地等待下文—里面肯定有什么故事。
-“一次，半夜突然醒来。”他开始讲述，“确切时间不清楚，大约两三点吧，也
+                            前言​        昨日想通过可视化的方式观察使用Pytorch训练的模型的loss下降趋势，以及模型框架，经过对比，选择tensorboardX。Github上的解决方案：**https://github.com/lanpa/tenso
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-12
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-24
                             </span>
                         <span class="publish-author">
                             
@@ -734,8 +726,8 @@ Attention​       通常Attention机制被分为soft attenti
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/散文/" target="_blank">
-                        <span class="chip bg-color">散文</span>
+                    <a href="/tags/Pytorch/" target="_blank">
+                        <span class="chip bg-color">Pytorch</span>
                     </a>
                     
                 </div>
