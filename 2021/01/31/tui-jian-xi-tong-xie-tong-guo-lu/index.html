@@ -4,8 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Leetcode.155, 我在云端跳舞">
-    <meta name="description" content="Leetcode.155 | 我在云端跳舞">
+    <meta name="keywords" content="推荐系统-协同过滤, 我在云端跳舞">
+    <meta name="description" content="协同过滤协同过滤简单来说是利用某兴趣相投、拥有共同经验之群体的喜好来推荐用户感兴趣的信息。
+分类
+基于记忆的协同过滤；基于这个用户消费过的东西，向他推荐相似的东西，或者向他推荐相似的人消费的东西。
+基于模型的协同过滤；从用户物品关系矩阵中学">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Leetcode.155 | 我在云端跳舞</title>
+    <title>推荐系统-协同过滤 | 我在云端跳舞</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +263,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Leetcode.155
+                        推荐系统-协同过滤
                     </div>
                 </div>
             </div>
@@ -375,9 +378,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/推荐系统/" target="_blank">
+                                <span class="chip bg-color">推荐系统</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -388,21 +395,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-12
+                    2021-01-31
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        322
+                        1.9k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        6 分
                     </div>
                     
                 
@@ -418,36 +425,89 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="155-最小栈"><a href="#155-最小栈" class="headerlink" title="155.最小栈"></a>155.最小栈</h2><ul>
-<li>设定一个辅助栈，用来存放<strong>stack</strong>中最小值：<ul>
-<li>push:每当push新值进来时，如果“小于等于”min_stack栈顶值，则一起push到min_stack，即更新了最小值；</li>
-<li>pop:判断pop出去的元素值是否是min_stack栈顶元素值（即最小值），如果是则将min_stack栈顶元素一起pop，这样可以保证min_stack栈顶元素始终是stack中的最小</li>
-<li>getMin:返回min_stack栈顶即可。</li>
-</ul>
-</li>
-<li>min_stack的作用是对stack中的元素做标记，标记的原则是min_stack中元素一定是降序的（栈底最大栈顶最小）。换个角度理解，min_stack等价于遍历stack所有元素，把升序的数字都删除掉，留下一个从栈底到栈顶降序的栈。本题要求获取最小值的复杂度是O(1)，因此须构建辅助栈，在push与pop的过程中始终保持辅助栈为一个降序栈。</li>
-<li>时间空间复杂度都为O(N)，获取最小值复杂度为O(1)。</li>
-</ul>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MinStack</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""
-        initialize your data structure here.
-        """</span>
-        self<span class="token punctuation">.</span>stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        self<span class="token punctuation">.</span>min_stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">def</span> <span class="token function">push</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> int<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> None<span class="token punctuation">:</span>
-    self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token operator">not</span> self<span class="token punctuation">.</span>min_stack <span class="token operator">or</span> x <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span> 
-        self<span class="token punctuation">.</span>min_stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">pop</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> None<span class="token punctuation">:</span>
-    <span class="token keyword">if</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>min_stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">def</span> <span class="token function">top</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
-    <span class="token keyword">return</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-
-<span class="token keyword">def</span> <span class="token function">getMin</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
-    <span class="token keyword">return</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
+                <h2 id="协同过滤"><a href="#协同过滤" class="headerlink" title="协同过滤"></a><strong>协同过滤</strong></h2><p>协同过滤简单来说是利用某兴趣相投、拥有共同经验之群体的喜好来推荐用户感兴趣的信息。</p>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a><strong>分类</strong></h3><ol>
+<li>基于记忆的协同过滤；<br>基于这个用户消费过的东西，向他推荐相似的东西，或者向他推荐相似的人消费的东西。</li>
+<li>基于模型的协同过滤；<br>从用户物品关系矩阵中学习模型，预测用户喜好。</li>
+</ol>
+<h2 id="基于用户的协同过滤"><a href="#基于用户的协同过滤" class="headerlink" title="基于用户的协同过滤"></a><strong>基于用户的协同过滤</strong></h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a><strong>原理</strong></h3><ol>
+<li>准备用户向量（需要用户在产品中有行为数据）；<br>向量的维度是物品个数。<br>向量是稀疏的。<br>向量维度的取值为布尔值。</li>
+<li>用每一个用户的向量，两两计算用户之间的相似度，设定阈值，为用户保留与其最相似的用户。</li>
+<li>为每个用户产生推荐结果；</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/80/v2-547e9a74f3f7ed708723a3714bb8a744_1440w.jpg" alt="img"></p>
+<p>P表示计算物品i和用户u的匹配分数，右侧坟墓是累加和用户u相似的n个用户，分子是n个用户对物品i的态度与对应的相似度加权求和。</p>
+<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a><strong>实践</strong></h3><h3 id="构造矩阵"><a href="#构造矩阵" class="headerlink" title="构造矩阵"></a><strong>构造矩阵</strong></h3><ol>
+<li>CSR：整体编码方式。由三个组成：数值、列号与行偏移共同编码；</li>
+<li>COO：每个元素用一个三元组表示（行号、列号、数值），只存储有值的元素，缺失值不存储。</li>
+</ol>
+<h3 id="降低相似度计算复杂度"><a href="#降低相似度计算复杂度" class="headerlink" title="降低相似度计算复杂度"></a><strong>降低相似度计算复杂度</strong></h3><ol>
+<li>对向量采样计算；</li>
+<li>向量化计算，想办法将循环转换成向量直接计算；</li>
+</ol>
+<h3 id="降低用户之间的计算代价"><a href="#降低用户之间的计算代价" class="headerlink" title="降低用户之间的计算代价"></a><strong>降低用户之间的计算代价</strong></h3><ol>
+<li>将相似度计算拆成Map Reduce任务，将原始矩阵Map成键为用户对，值为两个用户对同一个物品的评分之积，Reduce阶段对乘积求和，MapReduce任务结束后再对值归一化；</li>
+<li>使用基于物品的协同过滤；</li>
+</ol>
+<h3 id="改进"><a href="#改进" class="headerlink" title="改进"></a><strong>改进</strong></h3><ol>
+<li>惩罚对热门物品的喜欢程度，因为热门的东西很难反映出用户的真实兴趣；</li>
+<li>对喜欢程度使用时间衰减函数，可以理解为人的口味不会保持一成不变；</li>
+</ol>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a><strong>应用场景</strong></h3><p>基于用户的协同过滤有两个产出：</p>
+<ol>
+<li>相似用户列表；</li>
+<li>基于用户的推荐结果；</li>
+</ol>
+<p>P表示计算物品i和用户u的匹配分数，右侧坟墓是累加和用户u相似的n个用户，分子是n个用户对物品i的态度与对应的相似度加权求和。</p>
+<h3 id="基于物品的协同过滤"><a href="#基于物品的协同过滤" class="headerlink" title="基于物品的协同过滤"></a><strong>基于物品的协同过滤</strong></h3><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a><strong>原理</strong></h3><h3 id="基于用户的协同过滤的问题"><a href="#基于用户的协同过滤的问题" class="headerlink" title="基于用户的协同过滤的问题"></a><strong>基于用户的协同过滤的问题</strong></h3><ol>
+<li>用户数量比较大，计算耗时；</li>
+<li>用户的兴趣点不是静态的，很难解决兴趣迁移问题；</li>
+<li>数据稀疏，当用户量比较大的时候，用户之间的共有消费行为比较少，很难有相近的兴趣点；</li>
+</ol>
+<h2 id="基于物品的协同过滤-1"><a href="#基于物品的协同过滤-1" class="headerlink" title="基于物品的协同过滤"></a><strong>基于物品的协同过滤</strong></h2><ol>
+<li>物品数量通常比较固定且远小于用户数量，计算时间不会成为瓶颈；</li>
+<li>物品之间的相似度比较静态，与用户的兴趣迁移无关；</li>
+<li>物品对应的消费者数量较大，对于计算物品之间的相似度稀疏度好过计算用户之间的相似度；</li>
+</ol>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a><strong>步骤</strong></h3><ol>
+<li>基于用户的消费行为，构建用户物品的关系矩阵；</li>
+<li>计算物品之间的相似度矩阵，行和列都是物品；</li>
+<li>产生推荐结果，可以为某个物品推荐相关物品，也可以为用户推荐物品；</li>
+</ol>
+<h3 id="相似度计算方法"><a href="#相似度计算方法" class="headerlink" title="相似度计算方法"></a><strong>相似度计算方法</strong></h3><p>余弦相似度，公式如下。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-3383ac029855c6581b04094b6eb2469f_1440w.jpg" alt="img"></p>
+<h3 id="改进方法"><a href="#改进方法" class="headerlink" title="改进方法"></a><strong>改进方法</strong></h3><ol>
+<li>物品中心化，为了去掉物品中粉丝群体的非理性因素；</li>
+<li>用户中心化，去掉用户打分的主观成分；</li>
+</ol>
+<h3 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a><strong>应用场景</strong></h3><h3 id="TopK推荐"><a href="#TopK推荐" class="headerlink" title="TopK推荐"></a><strong>TopK推荐</strong></h3><p>类似于“猜你喜欢”，与基于用户的推荐算法一样，用相似度加权汇总。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-cdc9a907f3c9b4f2adafc1a1d5fe0a25_1440w.jpg" alt="img"></p>
+<p>左侧为用户u对物品i的分数预测，右侧分子为物品i与其他物品的相似度与用户的评分乘积再求和，分母为物品的相似度总和。TopK推荐可以离线完成，去掉用户已经消费过的，保留分数最高的k个结果存储。当用户访问首页时，直接查询即可。</p>
+<h3 id="相关推荐"><a href="#相关推荐" class="headerlink" title="相关推荐"></a><strong>相关推荐</strong></h3><p>类似于“看了又看，买了又买”。</p>
+<p>Slope One算法</p>
+<p>经典的基于物品的推荐，相似度矩阵计算无法实时更新，整个过程都是离线的，同时相似度计算时没有考虑相似度的置信问题。</p>
+<p>Slope One算法计算的不是物品之间的相似度，而是计算的物品之间的距离。</p>
+<h2 id="协同过滤的相似度计算方法"><a href="#协同过滤的相似度计算方法" class="headerlink" title="协同过滤的相似度计算方法"></a><strong>协同过滤的相似度计算方法</strong></h2><h3 id="相似度概念"><a href="#相似度概念" class="headerlink" title="相似度概念"></a><strong>相似度概念</strong></h3><p>在推荐算法中，如果两个物体很相似，那么这两个物体就很容易产生一样的动作。</p>
+<h3 id="欧氏距离"><a href="#欧氏距离" class="headerlink" title="欧氏距离"></a><strong>欧氏距离</strong></h3><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a><strong>定义</strong></h3><p>欧氏空间下度量距离的方法，假设两个物体的坐标分别为p与q，那么欧氏距离就是衡量这两个点之间的距离。需要说明的是，<strong>欧式距离不适合衡量布尔向量之间距离</strong>。</p>
+<h3 id="计算方式"><a href="#计算方式" class="headerlink" title="计算方式"></a><strong>计算方式</strong></h3><p><img src="https://pic2.zhimg.com/80/v2-c1e388a665d6c42c491997c58cca4a59_1440w.jpg" alt="img"></p>
+<p>因为欧氏距离得到的值是一个0到正无穷的范围，通常需要经过二次转化才能用于相似度计算度量。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-c5235cf17b607f4cfec25b7b38cad44b_1440w.jpg" alt="img"></p>
+<p>这样可以将欧氏距离转换为0到1的相似度。欧式距离度量的是空间中两个点的绝对差异，适用于分析用户能力模型之间的差异，比如消费能力，贡献内容的能力等。</p>
+<h3 id="余弦相似度"><a href="#余弦相似度" class="headerlink" title="余弦相似度"></a><strong>余弦相似度</strong></h3><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a><strong>定义</strong></h3><p>余弦相似度度量用两个向量的夹角的余弦值度量，当两个向量夹角为0度、90度、180度时，余弦值分别为1、0、-1。</p>
+<p>余弦相似度在度量文本相似度、用户相似度、物品相似度时较为常用，但<strong>余弦相似度与向量长度无关</strong>，这是因为余弦相似度计算需要对向量长度做归一化。</p>
+<h3 id="计算方式-1"><a href="#计算方式-1" class="headerlink" title="计算方式"></a><strong>计算方式</strong></h3><p><img src="https://pic4.zhimg.com/80/v2-55d72c17545bf1c09935febfb9a124ab_1440w.jpg" alt="img"></p>
+<p>余弦相似度的背后的逻辑为：两个向量，如果方向一致，不管程度大小，都可以视为相似。</p>
+<p>在协同过滤中，如果选择余弦相似度，某种程度上更加依赖两个物品的共同评价用户数，而不是用户的评分，这是因为余弦相似度被向量长度归一化后的结果。</p>
+<h3 id="调整的余弦相似度"><a href="#调整的余弦相似度" class="headerlink" title="调整的余弦相似度"></a><strong>调整的余弦相似度</strong></h3><p>先计算向量每个维度的均值，之后每个向量在各个维度上都减去均值，之后计算余弦相似度。</p>
+<h3 id="皮尔逊相关度"><a href="#皮尔逊相关度" class="headerlink" title="皮尔逊相关度"></a><strong>皮尔逊相关度</strong></h3><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a><strong>定义</strong></h3><p>可以把皮尔逊相关度理解为对向量做了中心化的余弦相似度，向量p与q各自减去向量的均值后，再计算余弦相似度。</p>
+<h3 id="公式"><a href="#公式" class="headerlink" title="公式"></a><strong>公式</strong></h3><p><img src="https://pic4.zhimg.com/80/v2-47d09544c29f594aca58fb971d9db83f_1440w.jpg" alt="img"></p>
+<p>皮尔逊相关度计算结果范围在-1到1。-1表示负相关，1表示正相关。皮尔逊相关度度量的是两个变量的变化趋势是否一致，所以不适合用作计算布尔值向量之间的相似度。</p>
+<h3 id="Jaccard相似度"><a href="#Jaccard相似度" class="headerlink" title="Jaccard相似度"></a><strong>Jaccard相似度</strong></h3><h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a><strong>定义</strong></h3><p>Jaccard相似度表示两个集合的交集元素个数在并集中所占的比例。通常使用Jaccard相似度基于隐式反馈数据来计算用户的相似度，计算方式：</p>
+<ol>
+<li>分子是两个布尔向量做点积计算，得到的是交集元素个数；</li>
+<li>分母是两个布尔向量做或运算，得到元素和；</li>
+</ol>
+<h3 id="公式-1"><a href="#公式-1" class="headerlink" title="公式"></a><strong>公式</strong></h3><p><img src="https://pic4.zhimg.com/80/v2-b74db59cb7430502ec030808353d4313_1440w.png" alt="img"></p>
 
             </div>
             <hr/>
@@ -606,9 +666,9 @@
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Leetcode.155》
+                    《推荐系统-协同过滤》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/Leetcode.155.html" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/01/31/tui-jian-xi-tong-xie-tong-guo-lu/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Severus
             </a> 采用
@@ -653,27 +713,27 @@
                 <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/Leetcode.155.html">
+                <a href="/2021/01/31/tui-jian-xi-tong-xie-tong-guo-lu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Leetcode.155">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="推荐系统-协同过滤">
                         
-                        <span class="card-title">Leetcode.155</span>
+                        <span class="card-title">推荐系统-协同过滤</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            155.最小栈
-设定一个辅助栈，用来存放stack中最小值：
-push:每当push新值进来时，如果“小于等于”min_stack栈顶值，则一起push到min_stack，即更新了最小值；
-pop:判断pop出去的元素值是否是min_st
+                            协同过滤协同过滤简单来说是利用某兴趣相投、拥有共同经验之群体的喜好来推荐用户感兴趣的信息。
+分类
+基于记忆的协同过滤；基于这个用户消费过的东西，向他推荐相似的东西，或者向他推荐相似的人消费的东西。
+基于模型的协同过滤；从用户物品关系矩阵中学
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-12
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-31
                             </span>
                         <span class="publish-author">
                             
@@ -685,36 +745,45 @@ pop:判断pop出去的元素值是否是min_st
                 </div>
 
                 
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/推荐系统/" target="_blank">
+                        <span class="chip bg-color">推荐系统</span>
+                    </a>
+                    
+                </div>
+                
             </div>
         </div>
         
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="fa fa-dot-circle-o"></i>
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/Leetcode.155.html">
+                <a href="/2020/10/11/leetcode-xi-ti-bi-ji-1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Leetcode.155">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="leetcode习题笔记1">
                         
-                        <span class="card-title">Leetcode.155</span>
+                        <span class="card-title">leetcode习题笔记1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            155.最小栈
-设定一个辅助栈，用来存放stack中最小值：
-push:每当push新值进来时，如果“小于等于”min_stack栈顶值，则一起push到min_stack，即更新了最小值；
-pop:判断pop出去的元素值是否是min_st
+                            1.两数之和题目给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。
+
+暴力枚举思路
+枚举数组
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-12
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-11
                             </span>
                         <span class="publish-author">
                             
@@ -724,7 +793,14 @@ pop:判断pop出去的元素值是否是min_st
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/leetcode/" target="_blank">
+                        <span class="chip bg-color">leetcode</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -879,7 +955,7 @@ pop:判断pop出去的元素值是否是min_st
 
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">73</span>
+                <span class="white-color">6k</span>
             
 
             
