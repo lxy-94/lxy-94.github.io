@@ -4,8 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="tensorboardX的Scalar使用详解, 我在云端跳舞">
-    <meta name="description" content="前言​        昨日想通过可视化的方式观察使用Pytorch训练的模型的loss下降趋势，以及模型框架，经过对比，选择tensorboardX。Github上的解决方案：**https://github.com/lanpa/tenso">
+    <meta name="keywords" content="我在云端跳舞">
+    <meta name="description" content="复杂度分析为什么需要复杂度分析如果单纯的把代码跑一边，通过统计、监控的方式得到算法执行的时间和占用的内存大小，这种方法通常叫做事后统计法。事后统计法的局限性在于
+
+测试结果非常依赖测试环境；
+测试结果受数据规模的影响很大；
+
+我们需要一个不">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>tensorboardX的Scalar使用详解 | 我在云端跳舞</title>
+    <title>我在云端跳舞</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -260,13 +265,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        tensorboardX的Scalar使用详解
+                        
                     </div>
                 </div>
             </div>
@@ -375,13 +380,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/Pytorch/" target="_blank">
-                                <span class="chip bg-color">Pytorch</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -392,21 +393,21 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-24
+                    2021-03-08
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        257
+                        1.1k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -422,25 +423,43 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        昨日想通过可视化的方式观察使用Pytorch训练的模型的loss下降趋势，以及模型框架，经过对比，选择tensorboardX。<strong>Github上的解决方案：**</strong><a href="https://github.com/lanpa/tensorboardX**。" target="_blank" rel="noopener">https://github.com/lanpa/tensorboardX**。</a></p>
-<h2 id="依赖环境"><a href="#依赖环境" class="headerlink" title="依赖环境"></a>依赖环境</h2><p>Python 2.7+</p>
-<p>Pytorch 0.4+</p>
-<p>tensorboardX: pip install tensorboardX, pip install tensorflow</p>
-<h2 id="代码教程"><a href="#代码教程" class="headerlink" title="代码教程"></a>代码教程</h2><h3 id="Scalar-教程"><a href="#Scalar-教程" class="headerlink" title="Scalar 教程"></a>Scalar 教程</h3><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> npfrom tensorboardX 
-<span class="token keyword">import</span> SummaryWriter
-writer <span class="token operator">=</span> SummaryWriter<span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">for</span> epoch <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">:</span>    
-    writer<span class="token punctuation">.</span>add_scalar<span class="token punctuation">(</span><span class="token string">'scalar/test'</span><span class="token punctuation">,</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> epoch<span class="token punctuation">)</span>       
-    writer<span class="token punctuation">.</span>add_scalars<span class="token punctuation">(</span><span class="token string">'scalar/scalars_test'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token string">'xsinx'</span><span class="token punctuation">:</span> epoch<span class="token operator">*</span>np<span class="token punctuation">.</span>sin<span class="token punctuation">(</span>epoch<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'xcosx'</span><span class="token punctuation">:</span> epoch<span class="token operator">*</span>np<span class="token punctuation">.</span>cos<span class="token punctuation">(</span>epoch<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">,</span> epoch<span class="token punctuation">)</span>
-writer<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
-<p>​        writer = Summarywriter()有两个参数(log_dir=None, comment=‘’, **kwargs)，其中log_dir为生成的文件所存放的目录，comment为文件名称，默认目录生成runs文件夹目录。</p>
-<p><img src="C:%5Cblog%5Cmyblog%5Csource_posts%5C1569274648075.png" alt></p>
-<p>​        当SummaryWriter(comment=’base_scalar’)，生成结果为：</p>
-<p><img src="C:%5Cblog%5Cmyblog%5Csource_posts%5C1569274748450.png" alt></p>
-<p>​        writer.add_scalar()，这句话是将我们需要的数据保存在文件里供可视化使用。第一个参数理解为保存的名称，第二个参数为Y轴数据，第三个参数为X轴数据。我们在runs同级目录下使用命令行：tensorboard –logdir runs，如下所示：</p>
-<p><img src="C:%5Cblog%5Cmyblog%5Csource_posts%5C1569275831694.png" alt></p>
-<p>​        最终的效果图如下：</p>
-<p><img src="C:%5Cblog%5Cmyblog%5Csource_posts%5C1569275879935.png" alt></p>
+                <h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><h4 id="为什么需要复杂度分析"><a href="#为什么需要复杂度分析" class="headerlink" title="为什么需要复杂度分析"></a>为什么需要复杂度分析</h4><p>如果单纯的把代码跑一边，通过统计、监控的方式得到算法执行的时间和占用的内存大小，这种方法通常叫做<strong>事后统计法</strong>。事后统计法的局限性在于</p>
+<ol>
+<li>测试结果非常依赖测试环境；</li>
+<li>测试结果受数据规模的影响很大；</li>
+</ol>
+<p>我们需要一个不用具体的测试数据来测试，就可以粗略地估计算法的执行效率的方法。</p>
+<h4 id="大-O-复杂度表示法"><a href="#大-O-复杂度表示法" class="headerlink" title="大 O 复杂度表示法"></a>大 O 复杂度表示法</h4><p>所有代码的执行时间 T(n) 与每行代码的执行次数 f(n) 成正比，n表示数据规模，公式中的O表示代码的执行时间T(n)与f(n)表达式成正比。</p>
+<p><img src="https://static001.geekbang.org/resource/image/22/ef/22900968aa2b190072c985a08b0e92ef.png" alt="img"></p>
+<p>大 O 时间复杂度实际上并不具体表示代码真正的执行时间，而是表示代码执行时间随数据规模增长的变化趋势，所以，也叫作渐进时间复杂度（asymptotic time complexity），简称<strong>时间复杂度</strong>。</p>
+<p>当n很大时，公式中的低阶、常量、系数三部分并不左右增长趋势，所以都可以忽略，我们只需记录一个最大量级就可以，例如T(n) = O(n)、T(n) = O(n2)。</p>
+<h4 id="时间复杂度分析"><a href="#时间复杂度分析" class="headerlink" title="时间复杂度分析"></a>时间复杂度分析</h4><h5 id="只关注循环执行次数最多的一段代码"><a href="#只关注循环执行次数最多的一段代码" class="headerlink" title="只关注循环执行次数最多的一段代码"></a>只关注循环执行次数最多的一段代码</h5><p>我们在分析一个算法、一段代码的时间复杂度的时候，也只关注循环执行次数最多的那一段代码就可以了。例如下代码，总体时间复杂度位O(n)。</p>
+<pre class=" language-java"><code class="language-java">
+ <span class="token keyword">int</span> <span class="token function">cal</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+   <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+   <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     sum <span class="token operator">=</span> sum <span class="token operator">+</span> i<span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+   <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span></code></pre>
+<h5 id="加法法则：总复杂度等于量级最大的那段代码的复杂度"><a href="#加法法则：总复杂度等于量级最大的那段代码的复杂度" class="headerlink" title="加法法则：总复杂度等于量级最大的那段代码的复杂度"></a>加法法则：总复杂度等于量级最大的那段代码的复杂度</h5><h5 id="乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积"><a href="#乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积" class="headerlink" title="乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积"></a>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</h5><h4 id="几种常见时间复杂度实例分析"><a href="#几种常见时间复杂度实例分析" class="headerlink" title="几种常见时间复杂度实例分析"></a>几种常见时间复杂度实例分析</h4><p><img src="https://static001.geekbang.org/resource/image/37/0a/3723793cc5c810e9d5b06bc95325bf0a.jpg" alt="img"></p>
+<p>可以分为<strong>多项式量级</strong>和<strong>非多项式量级</strong>，我们把时间复杂度位非多项式量级的算法问题叫做NP问题，时间复杂度可以为O(2n) 和 O(n!)。二常见的多项式时间复杂度如下。</p>
+<h5 id="O-1"><a href="#O-1" class="headerlink" title="O(1)"></a>O(1)</h5><p>一般情况下，只要算法中不存在循环语句、递归语句，即使有成千上万行的代码，其时间复杂度也是Ο(1)。</p>
+<h5 id="O-logn-、O-nlogn"><a href="#O-logn-、O-nlogn" class="headerlink" title="O(logn)、O(nlogn)"></a>O(logn)、O(nlogn)</h5><p>例如下列代码的时间复杂度为O(logn)</p>
+<pre class=" language-java"><code class="language-java">i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span> 
+<span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+i <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span></code></pre>
+<p>如果一段代码的时间复杂度是 O(logn)，我们循环执行 n 遍，时间复杂度就是 O(nlogn) 了。</p>
+<h5 id="O-m-n-、O-m-n"><a href="#O-m-n-、O-m-n" class="headerlink" title="O(m+n)、O(m*n)"></a>O(m+n)、O(m*n)</h5><p>代码的复杂度由两个数据的规模来决定。</p>
+<h4 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h4><p>时间复杂度的全称是<strong>渐进时间复杂度*，表示算法的执行时间与数据规模之间的增长关系。</strong>类比一下，空间复杂度全称就是<strong>渐进空间复杂度</strong>（asymptotic space complexity），<strong>表示算法的存储空间与数据规模之间的增长关系</strong>。常见的空间复杂度就是 O(1)、O(n)、O(n^2)。</p>
+<p><img src="https://static001.geekbang.org/resource/image/49/04/497a3f120b7debee07dc0d03984faf04.jpg" alt="img"></p>
+<h4 id="最好、最坏情况时间复杂度"><a href="#最好、最坏情况时间复杂度" class="headerlink" title="最好、最坏情况时间复杂度"></a>最好、最坏情况时间复杂度</h4><p>最好情况时间复杂度：在最理想情况下，执行这段代码的时间复杂度。</p>
+<p>最坏情况时间复杂度：在最坏情况下，执行这段代码的时间复杂度。</p>
+<h4 id="平均情况时间复杂度"><a href="#平均情况时间复杂度" class="headerlink" title="平均情况时间复杂度"></a>平均情况时间复杂度</h4><p>平均时间复杂度的全称叫加权平均时间复杂度或者期望时间复杂度。</p>
+<p>在大多数情况下，我们不需要区分最好、最坏、平均时间复杂度三种情况，只有同一块代码在不同的情况下，时间复杂度有量级的差距，我们才用这三种复杂度表示法来区分。</p>
+<h4 id="均摊时间复杂度"><a href="#均摊时间复杂度" class="headerlink" title="均摊时间复杂度"></a>均摊时间复杂度</h4><p>对一个数据结构进行一组连续操作中，大部分情况下时间复杂度都很低，只有个别情况下时间复杂度比较高，而且这些操作之间存在前后连贯的时序关系，这个时候，我们就可以将这一组操作放在一块儿分析，看是否能将较高时间复杂度那次操作的耗时，平摊到其他那些时间复杂度比较低的操作上。而且，在能够应用均摊时间复杂度分析的场合，一般均摊时间复杂度就等于最好情况时间复杂度。</p>
 
             </div>
             <hr/>
@@ -599,9 +618,9 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《tensorboardX的Scalar使用详解》
+                    《》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/24/tensorboardx-de-scalar-shi-yong-xiang-jie/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/03/08/fu-za-du-fen-xi/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Severus
             </a> 采用
@@ -641,31 +660,35 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/11/17/singan-lun-wen-jie-du/">
+                <a href="/2021/03/08/fu-za-du-fen-xi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="SinGAN论文解读">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">SinGAN论文解读</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            ﻿论文地址这篇论文为ICCV2019最佳论文，主要贡献在于设计了一个基于单张图片的图像生成模型，并将其应用到多个方向，包括图像随机生成，图像融合、手绘画转自然图像、图像编辑以及图像超分重建。最近找时间将学习到的部分进行总结整理。
-创新点
-设
+                            复杂度分析为什么需要复杂度分析如果单纯的把代码跑一边，通过统计、监控的方式得到算法执行的时间和占用的内存大小，这种方法通常叫做事后统计法。事后统计法的局限性在于
+
+测试结果非常依赖测试环境；
+测试结果受数据规模的影响很大；
+
+我们需要一个不
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-11-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -674,14 +697,7 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/论文/" target="_blank">
-                        <span class="chip bg-color">论文</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -692,25 +708,27 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/24/xi-que-jie-du/">
+                <a href="/2021/01/31/tui-jian-xi-tong-xie-tong-guo-lu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="《稀缺》解读">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="推荐系统-协同过滤">
                         
-                        <span class="card-title">《稀缺》解读</span>
+                        <span class="card-title">推荐系统-协同过滤</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            为什么穷人越穷，富人越富？怎样才能摆脱稀缺心态，摆脱贫穷。
-稀缺的构成作者认为长期的贫穷会带来一种稀缺心态。稀缺心态有个好处，会带来专注红利：短时间内集中精力爆发出高度注意力，比如Deadline之前的几天，是工作效率最高的时候；再比如永远
+                            协同过滤协同过滤简单来说是利用某兴趣相投、拥有共同经验之群体的喜好来推荐用户感兴趣的信息。
+分类
+基于记忆的协同过滤；基于这个用户消费过的东西，向他推荐相似的东西，或者向他推荐相似的人消费的东西。
+基于模型的协同过滤；从用户物品关系矩阵中学
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-24
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-31
                             </span>
                         <span class="publish-author">
                             
@@ -723,8 +741,8 @@ writer<span class="token punctuation">.</span>close<span class="token punctuatio
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/读书/" target="_blank">
-                        <span class="chip bg-color">读书</span>
+                    <a href="/tags/推荐系统/" target="_blank">
+                        <span class="chip bg-color">推荐系统</span>
                     </a>
                     
                 </div>
