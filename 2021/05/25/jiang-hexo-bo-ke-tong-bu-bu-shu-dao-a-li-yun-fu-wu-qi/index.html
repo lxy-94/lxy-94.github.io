@@ -426,7 +426,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="将Hexo博客同步部署到阿里云服务器"><a href="#将Hexo博客同步部署到阿里云服务器" class="headerlink" title="将Hexo博客同步部署到阿里云服务器"></a>将Hexo博客同步部署到阿里云服务器</h1><p>前两天闲来无事，买了个阿里云服务器玩玩，恰好发现此前放在github.io的博客网站经常被限流，日常登不上。于是就打算把现有内容迁移到服务器上，中间碰到的小坑记录一下。</p>
-<img src="E:%5Cblog%5C%E5%B0%86Hexo%E5%8D%9A%E5%AE%A2%E5%90%8C%E6%AD%A5%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%5Cimage-20210525210320594.png" alt="image-20210525210320594" style="zoom:50%;">
+<img src="C:%5Cblog%5Cmyblog%5Csource%5C_posts%5Cimage-20210525210320594.png" alt="image-20210525210320594" style="zoom:50%;">
 
 <h2 id="服务器端设置"><a href="#服务器端设置" class="headerlink" title="服务器端设置"></a>服务器端设置</h2><h3 id="安装git与nginx"><a href="#安装git与nginx" class="headerlink" title="安装git与nginx"></a>安装git与nginx</h3><p>首先需要安装git以及nginx，因为阿里云服务器是CentOS，所以使用yum安装。</p>
 <pre><code>sudo yum install git
@@ -440,7 +440,7 @@ git --work-tree=/opt/hexo --git-dir=/root/blogit.git checkout -f</code></pre><p>
 <p>注意root这个地方改为hexo博客所在路径，与上面的git-hooks一致。</p>
 <p>重新载入nginx，使配置生效。</p>
 <pre><code>/bin/systemctl reload nginx.service</code></pre><h2 id="阿里云服务器更改配置"><a href="#阿里云服务器更改配置" class="headerlink" title="阿里云服务器更改配置"></a>阿里云服务器更改配置</h2><p>阿里云默认关闭了HTTP与HTTPS的公网访问，需要更改防火墙，进入云服务器的控制台的安全组，并点击实例。</p>
-<img src="E:%5Cblog%5C%E5%B0%86Hexo%E5%8D%9A%E5%AE%A2%E5%90%8C%E6%AD%A5%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%5Cimage-20210525231316344.png" alt="image-20210525231316344" style="zoom:50%;">
+<img src="C:%5Cblog%5Cmyblog%5Csource%5C_posts%5Cimage-20210525231316344.png" alt="image-20210525231316344" style="zoom:50%;">
 
 <p>需要访问规则做如下更改。</p>
 <p><img src="C:%5Cblog%5Cmyblog%5Csource%5C_posts%5Cimage-20210525231140578.png" alt="image-20210525231140578"></p>
