@@ -4,11 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Leetcode.155, 我在云端跳舞">
-    <meta name="description" content="155.最小栈
-设定一个辅助栈，用来存放stack中最小值：
-push:每当push新值进来时，如果“小于等于”min_stack栈顶值，则一起push到min_stack，即更新了最小值；
-pop:判断pop出去的元素值是否是min_st">
+    <meta name="keywords" content="Canny、Sobel、Laplace区别, 我在云端跳舞">
+    <meta name="description" content="Canny、Sobel、Laplace区别边缘其实就是图像上灰度级变化很快的点的集合。 如何计算出这些变化率很快的点？
+1.导数，连续函数上某点斜率，导数越大表示变化率越大，变化率越大的地方就越是“边缘”，但是在计算机中不常用，因为在斜率9">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@ pop:判断pop出去的元素值是否是min_st">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Leetcode.155 | 我在云端跳舞</title>
+    <title>Canny、Sobel、Laplace区别 | 我在云端跳舞</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -263,13 +261,13 @@ pop:判断pop出去的元素值是否是min_st">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Leetcode.155
+                        Canny、Sobel、Laplace区别
                     </div>
                 </div>
             </div>
@@ -378,9 +376,13 @@ pop:判断pop出去的元素值是否是min_st">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/图像算法/" target="_blank">
+                                <span class="chip bg-color">图像算法</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -391,21 +393,21 @@ pop:判断pop出去的元素值是否是min_st">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-12
+                    2021-06-20
                 </div>
 
                 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                        322
+                        1.2k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                        1 分
+                        4 分
                     </div>
                     
                 
@@ -421,36 +423,56 @@ pop:判断pop出去的元素值是否是min_st">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="155-最小栈"><a href="#155-最小栈" class="headerlink" title="155.最小栈"></a>155.最小栈</h2><ul>
-<li>设定一个辅助栈，用来存放<strong>stack</strong>中最小值：<ul>
-<li>push:每当push新值进来时，如果“小于等于”min_stack栈顶值，则一起push到min_stack，即更新了最小值；</li>
-<li>pop:判断pop出去的元素值是否是min_stack栈顶元素值（即最小值），如果是则将min_stack栈顶元素一起pop，这样可以保证min_stack栈顶元素始终是stack中的最小</li>
-<li>getMin:返回min_stack栈顶即可。</li>
-</ul>
-</li>
-<li>min_stack的作用是对stack中的元素做标记，标记的原则是min_stack中元素一定是降序的（栈底最大栈顶最小）。换个角度理解，min_stack等价于遍历stack所有元素，把升序的数字都删除掉，留下一个从栈底到栈顶降序的栈。本题要求获取最小值的复杂度是O(1)，因此须构建辅助栈，在push与pop的过程中始终保持辅助栈为一个降序栈。</li>
-<li>时间空间复杂度都为O(N)，获取最小值复杂度为O(1)。</li>
-</ul>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">MinStack</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token triple-quoted-string string">"""
-        initialize your data structure here.
-        """</span>
-        self<span class="token punctuation">.</span>stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-        self<span class="token punctuation">.</span>min_stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">def</span> <span class="token function">push</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> x<span class="token punctuation">:</span> int<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> None<span class="token punctuation">:</span>
-    self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> <span class="token operator">not</span> self<span class="token punctuation">.</span>min_stack <span class="token operator">or</span> x <span class="token operator">&lt;=</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span> 
-        self<span class="token punctuation">.</span>min_stack<span class="token punctuation">.</span>append<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">pop</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> None<span class="token punctuation">:</span>
-    <span class="token keyword">if</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-        self<span class="token punctuation">.</span>min_stack<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-<span class="token keyword">def</span> <span class="token function">top</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
-    <span class="token keyword">return</span> self<span class="token punctuation">.</span>stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
-
-<span class="token keyword">def</span> <span class="token function">getMin</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> int<span class="token punctuation">:</span>
-    <span class="token keyword">return</span> self<span class="token punctuation">.</span>min_stack<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span></code></pre>
+                <h2 id="Canny、Sobel、Laplace区别"><a href="#Canny、Sobel、Laplace区别" class="headerlink" title="Canny、Sobel、Laplace区别"></a>Canny、Sobel、Laplace区别</h2><p>边缘其实就是图像上灰度级变化很快的点的集合。<br> 如何计算出这些变化率很快的点？</p>
+<p><strong>1.导数</strong>，连续函数上某点斜率，导数越大表示变化率越大，变化率越大的地方就越是“边缘”，但是在计算机中不常用，因为在斜率90度的地方，导数无穷大，计算机很难表示这些无穷大的东西。</p>
+<p><strong>2.微分</strong>，连续函数上x变化了dx，导致y变化了dy，dy值越大表示变化的越大，那么计算整幅图像的微分，dy的大小就是边缘的强弱了。<br> 微分与导数的关系：dy = f ‘(x) dx</p>
+<p>举个例子：</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2764502-93a51ed054646e22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/952/format/webp" alt="img"></p>
+<p>在连续函数里叫微分，因为图像是离散的，叫差分，和微分是一个意思，也是求变化率。<br> 差分的定义，f ‘(x) = f(x + 1) - f(x)，用后一项减前一项。<br> 按先后排列  -f(x) + f(x + 1)<br> 提出系数 [-1, 1] 作为滤波模板，跟原图 f(x) 做卷积运算就可以检测边缘了</p>
+<h3 id="模板为什么要是奇数的？"><a href="#模板为什么要是奇数的？" class="headerlink" title="模板为什么要是奇数的？"></a>模板为什么要是奇数的？</h3><p>因为模板是偶数的话，卷积出来的结果应该是放在中间的，不方便表示。<br> 例如：图像 [10, 20, 30] 跟 [-1, 1] 卷积后的值，应该放在图像 10 跟 20 中间的位置，就是应该放在 0 和 1 号位置的中间，也就是 0.5 号位，但是图像是离散的，中间没得放，只能放在 0 号位，也就是 10 的位置，就偏差了 0.5 的位置，为了方便处理，滤波模板一般都是奇数个的，3，5，7 个的。</p>
+<h1 id="Sobel-边缘检测算子"><a href="#Sobel-边缘检测算子" class="headerlink" title="Sobel 边缘检测算子"></a>Sobel 边缘检测算子</h1><p>所以用 f ‘(x) = f(x + 1) - f(x - 1) 近似计算一阶差分。</p>
+<pre class=" language-css"><code class="language-css">排好序：[-<span class="token number">1</span> * <span class="token function">f</span><span class="token punctuation">(</span>x-<span class="token number">1</span><span class="token punctuation">)</span>，<span class="token number">0</span> * <span class="token function">f</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>，<span class="token number">1</span> * <span class="token function">f</span><span class="token punctuation">(</span>x+<span class="token number">1</span><span class="token punctuation">)</span>]
+提出系数：[-<span class="token number">1</span>, <span class="token number">0</span>, <span class="token number">1</span>]</code></pre>
+<p>所以模板 [-1, 1] 被改造成了 [-1, 0, 1]<br> 二维情况下就是</p>
+<pre class=" language-undefined"><code class="language-undefined">-1, 0, 1
+-1, 0, 1
+-1, 0, 1</code></pre>
+<p>这个就是 Prewitt 边缘检测算子了。</p>
+<pre class=" language-undefined"><code class="language-undefined">f(x-1, y-1),  f(x, y-1),  f(x+1, y-1)
+f(x-1, y),    f(x, y),    f(x+1, y)
+f(x-1, y+1),  f(x, y+1),  f(x+1, y+1)</code></pre>
+<p>中心点 f(x, y) 是重点考虑的，它的权重应该多一些，所以改进成下面这样的</p>
+<pre class=" language-undefined"><code class="language-undefined">-1, 0, 1
+-2, 0, 2
+-1, 0, 1</code></pre>
+<p>这就是 Sobel 边缘检测算子，偏 x 方向的。（类似二元函数的偏导数，偏x，偏y）<br> 同理可得</p>
+<pre class=" language-undefined"><code class="language-undefined">-1, -2, -1
+ 0,  0,  0
+ 1,  2,  1</code></pre>
+<p>是 sobel 偏 y 方向的算子。</p>
+<p>分别计算偏 x 方向的 Gx，偏 y 方向的 Gy，求绝对值，压缩到 [0, 255]<br> 区间，即 G(x, y) = Gx + Gy 就是 sobel 边缘检测后的图像了</p>
+<h1 id="Laplace-边缘检测算子"><a href="#Laplace-边缘检测算子" class="headerlink" title="Laplace 边缘检测算子"></a>Laplace 边缘检测算子</h1><p>拉普拉斯是用二阶差分计算边缘的，看连续函数的情况下<br> 在一阶微分图中极大值或极小值处，认为是边缘。<br> 在二阶微分图中极大值和极小值之间的过 0 点，被认为是边缘。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2764502-7410dddc5d82bf8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<p>拉普拉斯算子推导：<br> 一阶差分：f ‘(x) = f(x) - f(x - 1)<br> 二阶差分：f ‘(x) = (f(x + 1) - f(x)) - (f(x) - f(x - 1))<br> 化简后：f ‘(x) = f(x - 1) - 2 f(x)) + f(x + 1)<br> 提取前面的系数：[1, -2, 1]</p>
+<p>二维的情况下，同理可得<br> f ‘(x, y) = -4 f(x, y) + f(x-1, y) + f(x+1, y) + f(x, y-1) + f(x, y+1)<br> 提取各个系数，写成模板的形式</p>
+<pre class=" language-undefined"><code class="language-undefined">0,  1, 0
+1, -4, 1
+0,  1, 0</code></pre>
+<p>考虑两个斜对角的情况</p>
+<pre class=" language-undefined"><code class="language-undefined">1,  1, 1
+1, -8, 1
+1,  1, 1</code></pre>
+<p>这就是拉普拉斯算子，与原图卷积运算即可求出边缘。</p>
+<h1 id="Canny-边缘检测算子"><a href="#Canny-边缘检测算子" class="headerlink" title="Canny 边缘检测算子"></a>Canny 边缘检测算子</h1><p>canny计算过程<br> 1.高斯滤波器平滑图像。<br> 2.一阶差分偏导计算梯度值和方向。<br> 3.对梯度值不是极大值的地方进行抑制。<br> 4.用双阈值连接图上的联通点。</p>
+<p>通俗说一下，<br> 1.用高斯滤波主要是去掉图像上的噪声。<br> 2.计算一阶差分，OpenCV 源码中也是用 sobel 算子来算的。<br> 3.算出来的梯度值，把不是极值的点，全部置0，去掉了大部分弱的边缘。所以图像边缘会变细。<br> 4.双阈值 t1, t2, 是这样的，t1 &lt;= t2<br> 大于 t2 的点肯定是边缘<br> 小于 t1 的点肯定不是边缘<br> 在 t1, t2 之间的点，通过已确定的边缘点，发起8领域方向的搜索（广搜），图中可达的是边缘，不可达的点不是边缘。<br> 最后得出 canny 边缘图。</p>
+<h1 id="三个算子区别"><a href="#三个算子区别" class="headerlink" title="三个算子区别"></a>三个算子区别</h1><p>sobel 产生的边缘有强弱，抗噪性好<br> laplace 对边缘敏感，可能有些是噪声的边缘，也被算进来了<br> canny 产生的边缘很细，可能就一个像素那么细，没有强弱之分。</p>
+<p>下面三张图分别是 sobel，canny，laplace 结果图。</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2764502-8c411fce4c452a8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1144/format/webp" alt="img"></p>
+<p>sobel算子</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2764502-95e81bc31ba99bab.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600/format/webp" alt="img"></p>
+<p>canny算子</p>
+<p><img src="https:////upload-images.jianshu.io/upload_images/2764502-f100024801c9bef6.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/516/format/webp" alt="img"></p>
+<p>laplace算子</p>
 
             </div>
             <hr/>
@@ -609,9 +631,9 @@ pop:判断pop出去的元素值是否是min_st">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Leetcode.155》
+                    《Canny、Sobel、Laplace区别》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/08/12/leetcode.155/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2021/06/20/canny-sobel-laplace-qu-bie/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Severus
             </a> 采用
@@ -651,30 +673,31 @@ pop:判断pop出去的元素值是否是min_st">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/08/15/shen-du-xue-xi-de-attenton-ji-zhi/">
+                <a href="/2021/06/20/canny-sobel-laplace-qu-bie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="深度学习的Attenton机制">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Canny、Sobel、Laplace区别">
                         
-                        <span class="card-title">深度学习的Attenton机制</span>
+                        <span class="card-title">Canny、Sobel、Laplace区别</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            简介​        通常在计算机视觉的深度学习算法中，Attention机制基本思想是让系统学会注意力，可以自动关注那些我们希望它关注的重点信息。
-Attention​       通常Attention机制被分为soft attenti
+                            Canny、Sobel、Laplace区别边缘其实就是图像上灰度级变化很快的点的集合。 如何计算出这些变化率很快的点？
+1.导数，连续函数上某点斜率，导数越大表示变化率越大，变化率越大的地方就越是“边缘”，但是在计算机中不常用，因为在斜率9
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-06-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -683,11 +706,12 @@ Attention​       通常Attention机制被分为soft attenti
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/论文/" target="_blank">
-                        <span class="chip bg-color">论文</span>
+                    <a href="/tags/图像算法/" target="_blank">
+                        <span class="chip bg-color">图像算法</span>
                     </a>
                     
                 </div>
@@ -701,27 +725,28 @@ Attention​       通常Attention机制被分为soft attenti
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/12/ai-ru-ban-ye-qi-di/">
+                <a href="/2021/05/25/jiang-hexo-bo-ke-tong-bu-bu-shu-dao-a-li-yun-fu-wu-qi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="爱如半夜汽笛">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="将Hexo博客同步部署到阿里云服务器">
                         
-                        <span class="card-title">爱如半夜汽笛</span>
+                        <span class="card-title">将Hexo博客同步部署到阿里云服务器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            《爱如半夜汽笛》—- 村上春树女孩问男孩：“你喜欢我喜欢到什么程度？” 
-少年想了想，用沉静的声音说：“半夜汽笛那个程度。” 
-少女默默地等待下文—里面肯定有什么故事。
-“一次，半夜突然醒来。”他开始讲述，“确切时间不清楚，大约两三点吧，也
+                            将Hexo博客同步部署到阿里云服务器[TOC]
+前两天闲来无事，买了个阿里云服务器玩玩，恰好发现此前放在github.io的博客网站经常被限流，日常登不上。于是就打算把现有内容迁移到服务器上，中间碰到的小坑记录一下。
+
+
+服务器端设置安装g
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-12
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-25
                             </span>
                         <span class="publish-author">
                             
@@ -734,8 +759,8 @@ Attention​       通常Attention机制被分为soft attenti
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/散文/" target="_blank">
-                        <span class="chip bg-color">散文</span>
+                    <a href="/tags/工作记录/" target="_blank">
+                        <span class="chip bg-color">工作记录</span>
                     </a>
                     
                 </div>
