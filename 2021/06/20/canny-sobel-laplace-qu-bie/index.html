@@ -427,7 +427,8 @@
 <p><strong>1.导数</strong>，连续函数上某点斜率，导数越大表示变化率越大，变化率越大的地方就越是“边缘”，但是在计算机中不常用，因为在斜率90度的地方，导数无穷大，计算机很难表示这些无穷大的东西。</p>
 <p><strong>2.微分</strong>，连续函数上x变化了dx，导致y变化了dy，dy值越大表示变化的越大，那么计算整幅图像的微分，dy的大小就是边缘的强弱了。<br> 微分与导数的关系：dy = f ‘(x) dx</p>
 <p>举个例子：</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2764502-93a51ed054646e22.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/952/format/webp" alt="img"></p>
+<img src="/2021/06/20/canny-sobel-laplace-qu-bie/2.png">
+
 <p>在连续函数里叫微分，因为图像是离散的，叫差分，和微分是一个意思，也是求变化率。<br> 差分的定义，f ‘(x) = f(x + 1) - f(x)，用后一项减前一项。<br> 按先后排列  -f(x) + f(x + 1)<br> 提出系数 [-1, 1] 作为滤波模板，跟原图 f(x) 做卷积运算就可以检测边缘了</p>
 <h3 id="模板为什么要是奇数的？"><a href="#模板为什么要是奇数的？" class="headerlink" title="模板为什么要是奇数的？"></a>模板为什么要是奇数的？</h3><p>因为模板是偶数的话，卷积出来的结果应该是放在中间的，不方便表示。<br> 例如：图像 [10, 20, 30] 跟 [-1, 1] 卷积后的值，应该放在图像 10 跟 20 中间的位置，就是应该放在 0 和 1 号位置的中间，也就是 0.5 号位，但是图像是离散的，中间没得放，只能放在 0 号位，也就是 10 的位置，就偏差了 0.5 的位置，为了方便处理，滤波模板一般都是奇数个的，3，5，7 个的。</p>
 <h1 id="Sobel-边缘检测算子"><a href="#Sobel-边缘检测算子" class="headerlink" title="Sobel 边缘检测算子"></a>Sobel 边缘检测算子</h1><p>所以用 f ‘(x) = f(x + 1) - f(x - 1) 近似计算一阶差分。</p>
@@ -452,7 +453,8 @@ f(x-1, y+1),  f(x, y+1),  f(x+1, y+1)</code></pre>
 <p>是 sobel 偏 y 方向的算子。</p>
 <p>分别计算偏 x 方向的 Gx，偏 y 方向的 Gy，求绝对值，压缩到 [0, 255]<br> 区间，即 G(x, y) = Gx + Gy 就是 sobel 边缘检测后的图像了</p>
 <h1 id="Laplace-边缘检测算子"><a href="#Laplace-边缘检测算子" class="headerlink" title="Laplace 边缘检测算子"></a>Laplace 边缘检测算子</h1><p>拉普拉斯是用二阶差分计算边缘的，看连续函数的情况下<br> 在一阶微分图中极大值或极小值处，认为是边缘。<br> 在二阶微分图中极大值和极小值之间的过 0 点，被认为是边缘。</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2764502-7410dddc5d82bf8d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<img src="/2021/06/20/canny-sobel-laplace-qu-bie/4.png">
+
 <p>拉普拉斯算子推导：<br> 一阶差分：f ‘(x) = f(x) - f(x - 1)<br> 二阶差分：f ‘(x) = (f(x + 1) - f(x)) - (f(x) - f(x - 1))<br> 化简后：f ‘(x) = f(x - 1) - 2 f(x)) + f(x + 1)<br> 提取前面的系数：[1, -2, 1]</p>
 <p>二维的情况下，同理可得<br> f ‘(x, y) = -4 f(x, y) + f(x-1, y) + f(x+1, y) + f(x, y-1) + f(x, y+1)<br> 提取各个系数，写成模板的形式</p>
 <pre class=" language-undefined"><code class="language-undefined">0,  1, 0
@@ -467,12 +469,15 @@ f(x-1, y+1),  f(x, y+1),  f(x+1, y+1)</code></pre>
 <p>通俗说一下，<br> 1.用高斯滤波主要是去掉图像上的噪声。<br> 2.计算一阶差分，OpenCV 源码中也是用 sobel 算子来算的。<br> 3.算出来的梯度值，把不是极值的点，全部置0，去掉了大部分弱的边缘。所以图像边缘会变细。<br> 4.双阈值 t1, t2, 是这样的，t1 &lt;= t2<br> 大于 t2 的点肯定是边缘<br> 小于 t1 的点肯定不是边缘<br> 在 t1, t2 之间的点，通过已确定的边缘点，发起8领域方向的搜索（广搜），图中可达的是边缘，不可达的点不是边缘。<br> 最后得出 canny 边缘图。</p>
 <h1 id="三个算子区别"><a href="#三个算子区别" class="headerlink" title="三个算子区别"></a>三个算子区别</h1><p>sobel 产生的边缘有强弱，抗噪性好<br> laplace 对边缘敏感，可能有些是噪声的边缘，也被算进来了<br> canny 产生的边缘很细，可能就一个像素那么细，没有强弱之分。</p>
 <p>下面三张图分别是 sobel，canny，laplace 结果图。</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2764502-8c411fce4c452a8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1144/format/webp" alt="img"></p>
-<p>sobel算子</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2764502-95e81bc31ba99bab.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/600/format/webp" alt="img"></p>
-<p>canny算子</p>
-<p><img src="https:////upload-images.jianshu.io/upload_images/2764502-f100024801c9bef6.jpeg?imageMogr2/auto-orient/strip%7CimageView2/2/w/516/format/webp" alt="img"></p>
-<p>laplace算子</p>
+<p><strong>sobel算子</strong></p>
+<img src="Canny、Sobel、Laplace区别/5.png" alt="sobel" style="zoom: 50%;">
+
+<p><strong>canny算子</strong></p>
+<img src="/2021/06/20/canny-sobel-laplace-qu-bie/6.png" title="sobel">
+
+<p><strong>laplace算子</strong></p>
+<img src="/2021/06/20/canny-sobel-laplace-qu-bie/7.png" title="laplace">
+
 
             </div>
             <hr/>
