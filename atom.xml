@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-06-20T07:10:01.693Z</updated>
+  <updated>2021-07-17T15:36:02.239Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>性能炸裂的HINet</title>
+    <link href="http://yoursite.com/2021/07/17/xing-neng-zha-lie-de-hinet/"/>
+    <id>http://yoursite.com/2021/07/17/xing-neng-zha-lie-de-hinet/</id>
+    <published>2021-07-17T15:33:46.000Z</published>
+    <updated>2021-07-17T15:36:02.239Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;HINet-Half-Instance-Normalization-Network-for-Image-Restoration&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="论文" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87/"/>
+    
+  </entry>
   
   <entry>
     <title>Canny、Sobel、Laplace区别</title>
